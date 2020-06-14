@@ -2,7 +2,7 @@ var config = {
 	"requireArcGISLogin": true, // Does the user need to log in to ArcGIS Online or ArcGIS Server?
 	"tokenUrl": 'https://www.arcgis.com/sharing/generateToken', // ArcGIS token generation URL
 
-	"title": "Bootleaf template map",
+	"title": "EWN Climate Risk Analyser",
 	"start": {
 		// "maxZoom": 16,
 		"center": [ -28.69, 133.22],
