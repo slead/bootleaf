@@ -99,7 +99,7 @@ var config = {
 			"fields": ["objectid","phenomenon","alertkey", "alertgroup", "alerttype"],
 			"queryWidget": {
 				"queries" : [
-					{"name": "Historic events"}
+					{"name": "phenomenon"}
 				],
 				"outFields": [
 					{"name": "phenomenon", "alias": "Phenomenon"},
