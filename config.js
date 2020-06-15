@@ -91,6 +91,7 @@ var config = {
 			"name": "Historic weather events",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
+			"opacity": 0.5,
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/historic/FeatureServer/1",
 			"visible": true,
 			// "minZoom": 12,
