@@ -249,6 +249,87 @@
 
 </script>
 
+<script id="climate-template" type="text/x-handlebars-template">
+<div id="frmClimateWidget" class="well well-sm">
+  <div class="row">
+    <div class="col-md-12">
+      <div >
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label for="cboHazard">Hazard</label>
+            <select class="custom-select d-block w-100" id="cboHazard" required>
+              <!-- <option value="">Choose...</option> -->
+              <option value="fire">bushfire</option>
+              <option value="cyclone1">cyclone 1</option>
+              <option value="cyclone2">cyclone 2</option>
+              <option value="cyclone3">cyclone 3</option>
+              <option value="cyclone4">cyclone 4</option>
+              <option value="cyclone5">cyclone 5</option>
+              <option value="drought">drought</option>
+              <option value="earthquake">earthquake</option>
+              <option value="flood">flood</option>
+              <option value="hail3-5">hail 3-5</option>
+              <option value="hail6-8">hail 6-8</option>
+              <option value="hail9+">hail 9+</option>
+              <option value="rain">rain</option>
+              <option value="tornado">tornado</option>
+              <option value="wind90-120">wind 90-120</option>
+              <option value="wind120+">wind 120+</option>
+            </select>
+          </div>
+
+          <div class="col-md-12 mb-3">
+            <label for="cboMode">Mode</label>
+            <select class="custom-select d-block w-100" id="cboMode" required>
+              <!-- <option value="">Choose...</option> -->
+              <option value="l">Local Government Area (LGA)</option>
+            </select>
+          </div>
+
+          <div class="col-md-12 mb-3">
+            <label for="txtLGA">Local Government Area</label>
+          </div>
+          <div class="col-md-12 mb-3">
+            <input type="text" id="txtLGA" required placeholder="Choose the LGA"/>
+          </div>
+
+          <div class="col-md-12 mb-3">
+            <label for="cboTime">Time Period</label>
+            <select class="custom-select d-block w-100" id="cboTime" required>
+              <!-- <option value="">Choose...</option> -->
+              <option value="1">1 years</option>
+              <option value="2">2 years</option>
+              <option value="5">5 years</option>
+              <option value="10">10 years</option>
+              <option value="15">15 years</option>
+              <option value="20">20 years</option>
+            </select>
+          </div>
+
+        </div>
+
+        <hr class="mb-4">
+        <div class="col-md-4 offset-md-4 mb-3">
+          <button id="btnRunClimateRiskAnalysis" class="btn btn-primary btn-lg btn-block" type="submit">Run</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="results" class="row mt-4" style="display: none;">
+    <h4>Results</h4>
+    <table id="tblProbabilities" class="table tbl-striped tbl">
+      <thead></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div id="error" class="row mt-4" style="display: none;">
+    <p><span id="errorText"></span></p>
+  </div>
+ </div>
+
+</script>
 <!-- required libraries -->
 <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
 <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>-->
