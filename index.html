@@ -258,7 +258,7 @@
         <div class="row">
           <div class="col-md-12 mb-3">
             <label for="cboHazard">Hazard</label>
-            <select class="custom-select d-block w-100" id="cboHazard" required>
+            <select class="climateInput custom-select d-block w-100" id="cboHazard" required>
               <option value="">Choose...</option>
               <option value="fire">bushfire</option>
               <option value="cyclone1">cyclone 1</option>
@@ -281,25 +281,25 @@
 
           <div class="col-md-12 mb-3">
             <label for="cboMode">Mode</label>
-            <select class="custom-select d-block w-100" id="cboMode" required>
+            <select class="climateInput custom-select d-block w-100" id="cboMode" required>
               <option value="">Choose...</option>
-              <option value="d">Draw a polygon</option>
+              <option value="d">Draw a bounding box</option>
               <option value="l">Local Government Area (LGA)</option>
             </select>
           </div>
 
           <div class="col-md-12 mb-3 climateLgaControls">
-            <input type="text" id="txtLGA" required placeholder="Choose the LGA"/>
+            <input type="text" id="txtLGA" class="climateInput" required placeholder="Choose the LGA"/>
           </div>
 
           <div class="col-md-12 mb-3 climateDrawControls">
             <span id="climateDrawControl"></span>
-            <span id="climateDrawControlHelp" class="info"> &larr; Activate the polygon tool then draw a shape on the map</span>
+            <span id="climateDrawControlHelp" class="info"> &nbsp; &nbsp; &larr; Activate the tool then draw a rectangle on the map</span>
           </div>
 
           <div class="col-md-12 mb-3">
             <label for="cboTime">Time Period</label>
-            <select class="custom-select d-block w-100" id="cboTime" required>
+            <select class="climateInput custom-select d-block w-100" id="cboTime" required>
               <option value="">Choose...</option>
               <option value="1">1 years</option>
               <option value="2">2 years</option>

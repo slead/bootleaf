@@ -75,6 +75,26 @@ function configureClimateRiskAnalysis() {
 	    source: bootleaf.bloodhoundEngine
 	  });
 
+	  // Reset the results if any inputs change, so the top portion of the control
+	  // always reflects the results
+	  $(".climateInput").on("change", function(){
+	  	$("#results").hide();
+	    $("#error").hide();
+	    $("#errorText").text("");
+	  })
+
+	  // Display the Draw control on the Query Widget panel
+		bootleaf.climateDrawControl = new L.Control.Draw({
+      position: 'topright',
+      draw: {
+          polygon: false,
+          polyline: false,
+          circle: false,
+          marker: false,
+          rectangle: true
+      }
+    });
+
 	  // Toggle the LGA control depending on the value of Mode
 	  $("#cboMode").on('change', function(evt){
 	  	if (this.value === 'l') {
@@ -82,12 +102,12 @@ function configureClimateRiskAnalysis() {
 	  		$('.climateDrawControls').hide();
 	  	} else if (this.value === 'd') {
 	  		$('.climateLgaControls').hide();
+	  		$("#climateDrawControlHelp").show();
 	  		$('.climateDrawControls').show();
 
-	  		// Display the Draw control on the Query Widget panel
-			  if (bootleaf.drawControl._map === null || bootleaf.drawControl._map === undefined){
-			    bootleaf.map.addControl(bootleaf.drawControl);
-			    var htmlObject = bootleaf.drawControl.getContainer();
+			  if (bootleaf.climateDrawControl._map === null || bootleaf.climateDrawControl._map === undefined){
+			    bootleaf.map.addControl(bootleaf.climateDrawControl);
+			    var htmlObject = bootleaf.climateDrawControl.getContainer();
 			    var a = document.getElementById('climateDrawControl');
 			    setParent(htmlObject, a);
 			  }
@@ -145,8 +165,13 @@ function runClimateAnalysis(){
 		    return;
 		  }
 		} else if (mode === 'd') {
-			var loc = JSON.stringify(bootleaf.climatePolygon.toGeoJSON().features[0].geometry.coordinates);
-	    console.log("climate query geometry:", loc)
+			try{
+				var loc = JSON.stringify(bootleaf.climatePolygon.toGeoJSON().features[0].geometry.coordinates);
+			} catch(err){
+				$("#errorText").text("Please draw a polygon to represent the area of interest");
+		    resetSubmitButton();
+		    return;
+			}
 		}
 
 	  var timePeriod = $("#cboTime").val();
