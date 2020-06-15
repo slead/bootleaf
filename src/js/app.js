@@ -636,11 +636,11 @@ function loadMap(){
   }
 
   // Run custom code after the map has loaded
-  try{
+  // try{
     afterMapLoads();
-  } catch (error){
-    $.growl.error({ message: "There was a problem running the AfterMapLoads custom code: " + error.message});
-  }
+  // } catch (error){
+  //   $.growl.error({ message: "There was a problem running the AfterMapLoads custom code: " + error.message});
+  // }
 
 }
 
