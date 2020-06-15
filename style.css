@@ -77,3 +77,7 @@ div.dataTables_wrapper div.dataTables_paginate {
 .leaflet-draw-toolbar .leaflet-draw-draw-circlemarker {
   display: none;
 }
+
+.lgaControls {
+  display: none;
+}

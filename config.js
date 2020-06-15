@@ -4,7 +4,7 @@ var config = {
   lgaNameField: "LGA_NAME19",
   pythonUrl: "http://climaterisk.ewn.com.au:5000/risk?",
 
-	"requireArcGISLogin": true, // Does the user need to log in to ArcGIS Online or ArcGIS Server?
+	"requireArcGISLogin": false, // Does the user need to log in to ArcGIS Online or ArcGIS Server?
 	"tokenUrl": 'https://www.arcgis.com/sharing/generateToken', // ArcGIS token generation URL
 
 	"title": "EWN Climate Risk Analyser",
@@ -96,7 +96,7 @@ var config = {
 			"name": "Historic weather events",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
-			"opacity": 0.5,
+			"opacity": 0.1,
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/historic/FeatureServer/1",
 			"visible": true,
 			// "minZoom": 12,

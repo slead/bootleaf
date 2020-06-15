@@ -74,6 +74,15 @@ function configureClimateRiskAnalysis() {
 	    name: 'lga',
 	    source: bootleaf.bloodhoundEngine
 	  });
+
+	  // Toggle the LGA control depending on the value of Mode
+	  $("#cboMode").on('change', function(evt){
+	  	if (this.value === 'l') {
+	  		$('.lgaControls').show();
+	  	} else {
+	  		$('.lgaControls').hide();
+	  	}
+	  })
 	});
 	switchOffTools();
 	bootleaf.activeTool = "climate";
@@ -89,17 +98,42 @@ function runClimateAnalysis(){
   resetSubmitButton("enable");
 
   var hazard = $("#cboHazard").val();
+  if (hazard === ""){
+    $("#errorText").text("Please choose the hazard type");
+    resetSubmitButton();
+    return;
+  }
+
   var mode = $("#cboMode").val();
-  var lga = $("#txtLGA").val();
+  if (mode === ""){
+    $("#errorText").text("Please choose the mode");
+    resetSubmitButton();
+    return;
+  } else if (mode === 'l') {
+		var lga = $("#txtLGA").val();
+	  if (lga === ""){
+	    $("#errorText").text("Please choose the starting LGA");
+	    resetSubmitButton();
+	    return;
+	  }
+	} else if (mode === 'd') {
+		console.log("add ability to specify a polygon")
+	}
+
   var timePeriod = $("#cboTime").val();
-  if (lga === ""){
-    $("#errorText").text("Please choose the starting LGA");
+  if (timePeriod === ""){
+    $("#errorText").text("Please choose the time period");
     resetSubmitButton();
     return;
   }
 
   try{
-    var url = config.pythonUrl + "hazard=" + hazard + "&mode=" + mode + "&name=" + lga + "&time=" + timePeriod;
+    var url = config.pythonUrl + "hazard=" + hazard + "&time=" + timePeriod + "&mode=" + mode;
+    if (mode === 'l') {
+    	url += "&name=" + lga;
+    } else if (mode === 'd'){
+    	url += "&loc=[[-26.9163029504216,-26.5197353567963,-25.2272174730742,-25.5275009631243,-26.9163029504216],[151.047109016969,152.153879031906,151.80195746,150.559486256706,151.047109016969]]";
+    }
 
     $.ajax({
       url: url,
