@@ -78,9 +78,36 @@ function configureClimateRiskAnalysis() {
 	  // Toggle the LGA control depending on the value of Mode
 	  $("#cboMode").on('change', function(evt){
 	  	if (this.value === 'l') {
-	  		$('.lgaControls').show();
+	  		$('.climateLgaControls').show();
+	  		$('.climateDrawControls').hide();
+	  	} else if (this.value === 'd') {
+	  		$('.climateLgaControls').hide();
+	  		$('.climateDrawControls').show();
+
+	  		// Display the Draw control on the Query Widget panel
+			  if (bootleaf.drawControl._map === null || bootleaf.drawControl._map === undefined){
+			    bootleaf.map.addControl(bootleaf.drawControl);
+			    var htmlObject = bootleaf.drawControl.getContainer();
+			    var a = document.getElementById('climateDrawControl');
+			    setParent(htmlObject, a);
+			  }
+
+			  // Add a graphics layer to hold polygons drawn in the QueryWidget draw tool
+		    bootleaf.climatePolygon = new L.FeatureGroup();
+		    bootleaf.map.addLayer(bootleaf.climatePolygon);
+		    bootleaf.map.on(L.Draw.Event.CREATED, function (e) {
+		      var layer = e.layer;
+		      bootleaf.climatePolygon.addLayer(layer);
+		    });
+
+		    bootleaf.map.on('draw:drawstart', function (e) {
+		      bootleaf.climatePolygon.clearLayers();
+		      $("#climateDrawControlHelp").hide();
+		    });
+
 	  	} else {
-	  		$('.lgaControls').hide();
+	  		$('.climateLgaControls').hide();
+	  		$('.climateDrawControls').hide();
 	  	}
 	  })
 	});
@@ -117,7 +144,11 @@ function runClimateAnalysis(){
 	    return;
 	  }
 	} else if (mode === 'd') {
-		console.log("add ability to specify a polygon")
+		var geometry = {
+      "rings": bootleaf.climatePolygon.toGeoJSON().features[0].geometry.coordinates,
+      "spatialReference": {"wkid":4326}
+    }
+    console.log("climate query geometry:", geometry)
 	}
 
   var timePeriod = $("#cboTime").val();
