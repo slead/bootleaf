@@ -63,7 +63,18 @@ function configureClimateRiskAnalysis() {
 	bootleaf.climateTemplate = Handlebars.compile(climateSource);
 	var html = bootleaf.climateTemplate();
 	resetSidebar("Climate Risk Analysis", html);
-	$("#sidebar").show();
+	$("#sidebar").show("slow", null, function(evt){
+		// Hook up the Bloodhound to the LGA search box
+	  $('#txtLGA').typeahead({
+	    hint: true,
+	    highlight: true,
+	    minLength: 1
+	  },
+	  {
+	    name: 'lga',
+	    source: bootleaf.bloodhoundEngine
+	  });
+	});
 	switchOffTools();
 	bootleaf.activeTool = "climate";
 
@@ -71,16 +82,6 @@ function configureClimateRiskAnalysis() {
     runClimateAnalysis();
   });
 
-  // Hook up the Bloodhound to the LGA search box
-  // $('#txtLGA').typeahead({
-  //   hint: true,
-  //   highlight: true,
-  //   minLength: 1
-  // },
-  // {
-  //   name: 'lga',
-  //   source: bootleaf.bloodhoundEngine
-  // });
 }
 
 function runClimateAnalysis(){
