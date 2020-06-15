@@ -124,46 +124,44 @@ function runClimateAnalysis(){
   console.log("click");
   resetSubmitButton("enable");
 
-  var hazard = $("#cboHazard").val();
-  if (hazard === ""){
-    $("#errorText").text("Please choose the hazard type");
-    resetSubmitButton();
-    return;
-  }
-
-  var mode = $("#cboMode").val();
-  if (mode === ""){
-    $("#errorText").text("Please choose the mode");
-    resetSubmitButton();
-    return;
-  } else if (mode === 'l') {
-		var lga = $("#txtLGA").val();
-	  if (lga === ""){
-	    $("#errorText").text("Please choose the starting LGA");
+  try{
+	  var hazard = $("#cboHazard").val();
+	  if (hazard === ""){
+	    $("#errorText").text("Please choose the hazard type");
 	    resetSubmitButton();
 	    return;
 	  }
-	} else if (mode === 'd') {
-		var geometry = {
-      "rings": bootleaf.climatePolygon.toGeoJSON().features[0].geometry.coordinates,
-      "spatialReference": {"wkid":4326}
-    }
-    console.log("climate query geometry:", geometry)
-	}
 
-  var timePeriod = $("#cboTime").val();
-  if (timePeriod === ""){
-    $("#errorText").text("Please choose the time period");
-    resetSubmitButton();
-    return;
-  }
+	  var mode = $("#cboMode").val();
+	  if (mode === ""){
+	    $("#errorText").text("Please choose the mode");
+	    resetSubmitButton();
+	    return;
+	  } else if (mode === 'l') {
+			var lga = $("#txtLGA").val();
+		  if (lga === ""){
+		    $("#errorText").text("Please choose the starting LGA");
+		    resetSubmitButton();
+		    return;
+		  }
+		} else if (mode === 'd') {
+			var loc = JSON.stringify(bootleaf.climatePolygon.toGeoJSON().features[0].geometry.coordinates);
+	    console.log("climate query geometry:", loc)
+		}
 
-  try{
+	  var timePeriod = $("#cboTime").val();
+	  if (timePeriod === ""){
+	    $("#errorText").text("Please choose the time period");
+	    resetSubmitButton();
+	    return;
+	  }
+
+
     var url = config.pythonUrl + "hazard=" + hazard + "&time=" + timePeriod + "&mode=" + mode;
     if (mode === 'l') {
     	url += "&name=" + lga;
     } else if (mode === 'd'){
-    	url += "&loc=[[-26.9163029504216,-26.5197353567963,-25.2272174730742,-25.5275009631243,-26.9163029504216],[151.047109016969,152.153879031906,151.80195746,150.559486256706,151.047109016969]]";
+    	url += "&loc=" + loc;
     }
 
     $.ajax({
@@ -171,7 +169,7 @@ function runClimateAnalysis(){
       type: 'GET'
     }).done(function(response) {
       if (response['output probabilities'] !== undefined){
-        $("#tblProbabilities > thead").append("<th>Year</th><th>Probability</th>");
+        $("#tblProbabilities > thead").append("<th>Num. of Events</th><th>Probability</th>");
         var probabilities = response['output probabilities'];
         for (var year in probabilities) {
           var value = probabilities[year];
