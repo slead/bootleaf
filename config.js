@@ -4,7 +4,7 @@ var config = {
   lgaNameField: "LGA_NAME19",
   pythonUrl: "http://climaterisk.ewn.com.au:5000/risk?",
 
-	"requireArcGISLogin": false, // Does the user need to log in to ArcGIS Online or ArcGIS Server?
+	"requireArcGISLogin": true, // Does the user need to log in to ArcGIS Online or ArcGIS Server?
 	"tokenUrl": 'https://www.arcgis.com/sharing/generateToken', // ArcGIS token generation URL
 
 	"title": "EWN Climate Risk Analyser",
@@ -75,7 +75,7 @@ var config = {
 	"tocCategories": [
 		{
 			"name": "ArcGIS Layers",
-			"layers" : ["historic"]
+			"layers" : ["Historic", "Alerts", "Events"]
 		}
 	],
 	"projections": [
@@ -98,7 +98,7 @@ var config = {
 			"tokenRequired": true,
 			"opacity": 0.1,
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/historic/FeatureServer/1",
-			"visible": true,
+			"visible": false,
 			// "minZoom": 12,
 			"useCors": false,
 			"popup": true,
@@ -113,6 +113,55 @@ var config = {
 				],
 				"maxAllowableOffset": 10
 			}
+		},
+		{
+			"id": "Alerts",
+			"name": "Alerts",
+			"type": "agsFeatureLayer",
+			"tokenRequired": true,
+			"opacity": 0.5,
+			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/ArcGIS/rest/services/Alerts/FeatureServer/3",
+			"visible": false,
+			// "minZoom": 12,
+			"useCors": false,
+			"popup": true,
+			"fields": ["objectid","phenomenon","alertkey", "alertgroup", "alerttype", "textforweb"],
+			"queryWidget": {
+				"queries" : [
+					{"name": "phenomenon"}
+				],
+				"outFields": [
+					{"name": "phenomenon", "alias": "Phenomenon"},
+					{"name": "alerttype", "alias": "Alert type"}
+				],
+				"maxAllowableOffset": 10
+			}
+		},
+		{
+			"id": "Events",
+			"name": "Events",
+			"type": "agsFeatureLayer",
+			"tokenRequired": true,
+			"opacity": 0.5,
+			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/Events/FeatureServer/2",
+			"visible": true,
+			// "minZoom": 12,
+			"useCors": false,
+			"popup": true,
+			"fields": ["objectid","phenomenon","alertkey", "alertgroup", "alerttype", "textforweb"],
+			"queryWidget": {
+				"queries" : [
+					{"name": "phenomenon"}
+				],
+				"outFields": [
+					{"name": "phenomenon", "alias": "Phenomenon"},
+					{"name": "alerttype", "alias": "Alert type"}
+				],
+				"maxAllowableOffset": 10
+			}
 		}
 	]
 }
+
+
+
