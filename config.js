@@ -111,7 +111,7 @@ var config = {
 		// Historic layers
 		{
 			"id": "historic_bushfireEmergency",
-			"name": "Bushfire emergency",
+			"name": "Historic - Bushfire emergency",
 			"where": "phenomenon = 'Bushfire Emergency'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -135,7 +135,7 @@ var config = {
 		},
 		{
 			"id": "historic_bushfireWarning",
-			"name": "Bushfire warning",
+			"name": "Historic - Bushfire warning",
 			"where": "phenomenon = 'Bushfire Warning'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -159,7 +159,7 @@ var config = {
 		},
 		{
 			"id": "historic_bushfireWatchAct",
-			"name": "Bushfire watch and act",
+			"name": "Historic - Bushfire watch and act",
 			"where": "phenomenon = 'Bushfire Watch & Act'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -183,7 +183,7 @@ var config = {
 		},
 		{
 			"id": "historic_fireWeatherWarning",
-			"name": "Fire weather warning",
+			"name": "Historic - Fire weather warning",
 			"where": "phenomenon = 'Fire Weather Warning'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -207,7 +207,7 @@ var config = {
 		},
 		{
 			"id": "historic_floodWatch",
-			"name": "Flood watch",
+			"name": "Historic - Flood watch",
 			"where": "phenomenon = 'Flood Watch'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -231,7 +231,7 @@ var config = {
 		},
 		{
 			"id": "historic_severeThunderstorm",
-			"name": "Severe thunderstorm",
+			"name": "Historic - Severe thunderstorm",
 			"where": "phenomenon = 'Severe Thunderstorm'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -255,7 +255,7 @@ var config = {
 		},
 		{
 			"id": "historic_severeWeather",
-			"name": "Severe weather",
+			"name": "Historic - Severe weather",
 			"where": "phenomenon = 'Severe Weather'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -279,7 +279,7 @@ var config = {
 		},
 		{
 			"id": "historic_totalFireBan",
-			"name": "Total fire ban",
+			"name": "Historic - Total fire ban",
 			"where": "phenomenon = 'Total Fire Ban'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -303,7 +303,7 @@ var config = {
 		},
 		{
 			"id": "historic_tropicalCyclone",
-			"name": "Tropical cyclone",
+			"name": "Historic - Tropical cyclone",
 			"where": "phenomenon = 'Tropical Cyclone'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -327,7 +327,7 @@ var config = {
 		},
 		{
 			"id": "historic_tsunami",
-			"name": "Tsunami",
+			"name": "Historic - Tsunami",
 			"where": "phenomenon = 'Tsunami'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -353,7 +353,7 @@ var config = {
 		// Alerts layers
 		{
 			"id": "alerts_bushfire",
-			"name": "Bushfire",
+			"name": "Alerts - Bushfire",
 			where: "phenomenon = 'Bushfire'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -376,7 +376,7 @@ var config = {
 		},
 		{
 			"id": "alerts_fireWeatherWarning",
-			"name": "Fire Weather Warning",
+			"name": "Alerts - Fire Weather Warning",
 			where: "phenomenon = 'Fire Weather Warning'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -399,7 +399,7 @@ var config = {
 		},
 		{
 			"id": "alerts_flood",
-			"name": "Flood",
+			"name": "Alerts - Flood",
 			where: "phenomenon = 'Flood'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -422,7 +422,7 @@ var config = {
 		},
 		{
 			"id": "alerts_general",
-			"name": "General",
+			"name": "Alerts - General",
 			where: "phenomenon = 'General'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -445,7 +445,7 @@ var config = {
 		},
 		{
 			"id": "alerts_severeThunderstorm",
-			"name": "Severe thunderstorm",
+			"name": "Alerts - Severe thunderstorm",
 			where: "phenomenon = 'Severe Thunderstorm'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -468,7 +468,7 @@ var config = {
 		},
 		{
 			"id": "alerts_severeWeather",
-			"name": "Severe Weather",
+			"name": "Alerts - Severe Weather",
 			where: "phenomenon = 'Severe weather'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -491,7 +491,7 @@ var config = {
 		},
 		{
 			"id": "alerts_tropicalCyclone",
-			"name": "Tropical cyclone",
+			"name": "Alerts - Tropical cyclone",
 			where: "phenomenon = 'Tropical Cyclone'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -516,7 +516,7 @@ var config = {
 		// Events layers
 		{
 			"id": "events_bushfire",
-			"name": "Bushfire",
+			"name": "Events - Bushfire",
 			"where": "phenomenon = 'Bushfire'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -540,7 +540,7 @@ var config = {
 		},
 		{
 			"id": "events_drought",
-			"name": "Drought",
+			"name": "Events - Drought",
 			"where": "phenomenon = 'Drought'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -564,7 +564,7 @@ var config = {
 		},
 		{
 			"id": "events_earthquake",
-			"name": "Earthquake",
+			"name": "Events - Earthquake",
 			"where": "phenomenon = 'Earthquake'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -588,7 +588,7 @@ var config = {
 		},
 		{
 			"id": "events_flood",
-			"name": "Flood",
+			"name": "Events - Flood",
 			"where": "phenomenon = 'Flood'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -612,7 +612,7 @@ var config = {
 		},
 		{
 			"id": "events_general",
-			"name": "General",
+			"name": "Events - General",
 			"where": "phenomenon = 'General'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -636,7 +636,7 @@ var config = {
 		},
 		{
 			"id": "events_severeThunderstorm",
-			"name": "Severe thunderstorm",
+			"name": "Events - Severe thunderstorm",
 			"where": "phenomenon = 'Severe Thunderstorm'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -660,7 +660,7 @@ var config = {
 		},
 		{
 			"id": "events_severeWeather",
-			"name": "Severe weather",
+			"name": "Events - Severe weather",
 			"where": "phenomenon = 'Severe weather'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -684,7 +684,7 @@ var config = {
 		},
 		{
 			"id": "events_tornado",
-			"name": "Tornado",
+			"name": "Events - Tornado",
 			"where": "phenomenon = 'Tornado'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -708,7 +708,7 @@ var config = {
 		},
 		{
 			"id": "events_tropicalCyclone",
-			"name": "Tropical cyclone",
+			"name": "Events - Tropical cyclone",
 			"where": "phenomenon = 'Tropical Cyclone'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -721,11 +721,14 @@ var config = {
 			"fields": ["objectid", "phenomenon", "textforweb"],
 			"queryWidget": {
 				"queries" : [
-					{"name": "phenomenon"}
+					{"name": "name", "alias": "Cyclone name"},
+					{"name": "category", "alias": "Category", "type": "numeric"}
 				],
 				"outFields": [
-					{"name": "phenomenon", "alias": "Phenomenon"},
-					{"name": "alerttype", "alias": "Alert type"}
+					{"name": "name", "alias": "Name"},
+					{"name": "category", "alias": "Category"},
+					{"name": "wind_gusts", "alias": "Wind gusts"},
+					{"name": "date", "alias": "Date"}
 				],
 				"maxAllowableOffset": 10
 			}
