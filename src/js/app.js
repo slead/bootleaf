@@ -181,6 +181,19 @@ function loadMap(){
           layer = L.esri.featureLayer(layerConfig);
         }
 
+        // Check that the token worked
+        if (layerConfig.token !== undefined) {
+          layer.metadata(function(error, metadata){
+            if (error !== undefined) {
+              console.error("error with layer:", error);
+              $("#growls").hide();
+              $("#container").hide();
+              $("#authenticationError").show();
+              $(".navbar").hide();
+            }
+          });
+        }
+
         // Configure a popup for this layer, if specified in the config
         if (layerConfig.popup) {
           layer.on("click", function(evt){
