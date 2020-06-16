@@ -75,7 +75,11 @@ var config = {
 	"tocCategories": [
 		{
 			"name": "ArcGIS Layers",
-			"layers" : ["Historic", "Alerts", "Events"]
+			"layers" : ["Historic", "Events"]
+		},
+		{
+			"name": "Alerts",
+			"layers" : ["alerts_bushfire", "alerts_fireWeatherWarning", "alerts_flood", "alerts_general", "alerts_severeThunderstorm", "alerts_severeWeather", "alerts_tropicalCyclone"]
 		}
 	],
 	"projections": [
@@ -115,17 +119,155 @@ var config = {
 			}
 		},
 		{
-			"id": "Alerts",
-			"name": "Alerts",
+			"id": "alerts_bushfire",
+			"name": "Bushfire",
+			where: "phenomenon = 'Bushfire'",
+			"type": "agsFeatureLayer",
+			"tokenRequired": true,
+			"opacity": 1,
+			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/ArcGIS/rest/services/Alerts/FeatureServer/3",
+			"visible": true,
+			"useCors": false,
+			"popup": true,
+			"fields": ["objectid", "phenomenon", "textforweb"],
+			"queryWidget": {
+				"queries" : [
+					{"name": "phenomenon"}
+				],
+				"outFields": [
+					{"name": "phenomenon", "alias": "Phenomenon"},
+					{"name": "alerttype", "alias": "Alert type"}
+				],
+				"maxAllowableOffset": 10
+			}
+		},
+		{
+			"id": "alerts_fireWeatherWarning",
+			"name": "Fire Weather Warning",
+			where: "phenomenon = 'Fire Weather Warning'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
 			"opacity": 0.5,
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/ArcGIS/rest/services/Alerts/FeatureServer/3",
 			"visible": false,
-			// "minZoom": 12,
 			"useCors": false,
 			"popup": true,
-			"fields": ["objectid","phenomenon","alertkey", "alertgroup", "alerttype", "textforweb"],
+			"fields": ["objectid", "phenomenon", "textforweb"],
+			"queryWidget": {
+				"queries" : [
+					{"name": "phenomenon"}
+				],
+				"outFields": [
+					{"name": "phenomenon", "alias": "Phenomenon"},
+					{"name": "alerttype", "alias": "Alert type"}
+				],
+				"maxAllowableOffset": 10
+			}
+		},
+		{
+			"id": "alerts_flood",
+			"name": "Flood",
+			where: "phenomenon = 'Flood'",
+			"type": "agsFeatureLayer",
+			"tokenRequired": true,
+			"opacity": 0.5,
+			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/ArcGIS/rest/services/Alerts/FeatureServer/3",
+			"visible": false,
+			"useCors": false,
+			"popup": true,
+			"fields": ["objectid", "phenomenon", "textforweb"],
+			"queryWidget": {
+				"queries" : [
+					{"name": "phenomenon"}
+				],
+				"outFields": [
+					{"name": "phenomenon", "alias": "Phenomenon"},
+					{"name": "alerttype", "alias": "Alert type"}
+				],
+				"maxAllowableOffset": 10
+			}
+		},
+		{
+			"id": "alerts_general",
+			"name": "General",
+			where: "phenomenon = 'General'",
+			"type": "agsFeatureLayer",
+			"tokenRequired": true,
+			"opacity": 0.5,
+			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/ArcGIS/rest/services/Alerts/FeatureServer/3",
+			"visible": false,
+			"useCors": false,
+			"popup": true,
+			"fields": ["objectid", "phenomenon", "textforweb"],
+			"queryWidget": {
+				"queries" : [
+					{"name": "phenomenon"}
+				],
+				"outFields": [
+					{"name": "phenomenon", "alias": "Phenomenon"},
+					{"name": "alerttype", "alias": "Alert type"}
+				],
+				"maxAllowableOffset": 10
+			}
+		},
+		{
+			"id": "alerts_severeThunderstorm",
+			"name": "Severe Thunderstorm",
+			where: "phenomenon = 'Severe Thunderstorm'",
+			"type": "agsFeatureLayer",
+			"tokenRequired": true,
+			"opacity": 0.5,
+			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/ArcGIS/rest/services/Alerts/FeatureServer/3",
+			"visible": false,
+			"useCors": false,
+			"popup": true,
+			"fields": ["objectid", "phenomenon", "textforweb"],
+			"queryWidget": {
+				"queries" : [
+					{"name": "phenomenon"}
+				],
+				"outFields": [
+					{"name": "phenomenon", "alias": "Phenomenon"},
+					{"name": "alerttype", "alias": "Alert type"}
+				],
+				"maxAllowableOffset": 10
+			}
+		},
+		{
+			"id": "alerts_severeWeather",
+			"name": "Severe Weather",
+			where: "phenomenon = 'Severe weather'",
+			"type": "agsFeatureLayer",
+			"tokenRequired": true,
+			"opacity": 0.5,
+			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/ArcGIS/rest/services/Alerts/FeatureServer/3",
+			"visible": false,
+			"useCors": false,
+			"popup": true,
+			"fields": ["objectid", "phenomenon", "textforweb"],
+			"queryWidget": {
+				"queries" : [
+					{"name": "phenomenon"}
+				],
+				"outFields": [
+					{"name": "phenomenon", "alias": "Phenomenon"},
+					{"name": "alerttype", "alias": "Alert type"}
+				],
+				"maxAllowableOffset": 10
+			}
+		},
+		{
+			"id": "alerts_tropicalCyclone",
+			"name": "Tropical cyclone",
+			where: "phenomenon = 'Tropical Cyclone'",
+			"type": "agsFeatureLayer",
+			"tokenRequired": true,
+			"opacity": 0.5,
+			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/ArcGIS/rest/services/Alerts/FeatureServer/3",
+			"visible": false,
+			"useCors": false,
+			"popup": true,
+			"fields": ["objectid", "phenomenon", "textforweb"],
 			"queryWidget": {
 				"queries" : [
 					{"name": "phenomenon"}
@@ -144,11 +286,11 @@ var config = {
 			"tokenRequired": true,
 			"opacity": 0.5,
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/Events/FeatureServer/2",
-			"visible": true,
+			"visible": false,
 			// "minZoom": 12,
 			"useCors": false,
 			"popup": true,
-			"fields": ["objectid","phenomenon","alertkey", "alertgroup", "alerttype", "textforweb"],
+			"fields": ["objectid", "phenomenon", "textforweb"],
 			"queryWidget": {
 				"queries" : [
 					{"name": "phenomenon"}
