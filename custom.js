@@ -81,6 +81,9 @@ function configureClimateRiskAnalysis() {
 	  	$("#results").hide();
 	    $("#error").hide();
 	    $("#errorText").text("");
+	    if (bootleaf.climatePolygon !== undefined){
+		    bootleaf.climatePolygon.clearLayers();
+		  }
 	  })
 
 	  // Display the Draw control on the Query Widget panel
@@ -112,7 +115,7 @@ function configureClimateRiskAnalysis() {
 			    setParent(htmlObject, a);
 			  }
 
-			  // Add a graphics layer to hold polygons drawn in the QueryWidget draw tool
+			  // Add a graphics layer to hold polygons drawn in the Bounding Box draw tool
 		    bootleaf.climatePolygon = new L.FeatureGroup();
 		    bootleaf.map.addLayer(bootleaf.climatePolygon);
 		    bootleaf.map.on(L.Draw.Event.CREATED, function (e) {
