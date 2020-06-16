@@ -110,30 +110,6 @@ var config = {
 	"layers": [
 		// Historic layers
 		{
-			"id": "historic_fireWeatherWarning",
-			"name": "Fire weather warning",
-			"where": "phenomenon = 'Fire Weather Warning'",
-			"type": "agsFeatureLayer",
-			"tokenRequired": true,
-			"opacity": 0.1,
-			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/historic/FeatureServer/1",
-			"visible": false,
-			// "minZoom": 12,
-			"useCors": false,
-			"popup": true,
-			"fields": ["objectid","phenomenon","textforweb"],
-			"queryWidget": {
-				"queries" : [
-					{"name": "phenomenon"}
-				],
-				"outFields": [
-					{"name": "phenomenon", "alias": "Phenomenon"},
-					{"name": "alerttype", "alias": "Alert type"}
-				],
-				"maxAllowableOffset": 10
-			}
-		},
-		{
 			"id": "historic_bushfireEmergency",
 			"name": "Bushfire emergency",
 			"where": "phenomenon = 'Bushfire Emergency'",
@@ -185,6 +161,30 @@ var config = {
 			"id": "historic_bushfireWatchAct",
 			"name": "Bushfire watch and act",
 			"where": "phenomenon = 'Bushfire Watch & Act'",
+			"type": "agsFeatureLayer",
+			"tokenRequired": true,
+			"opacity": 0.1,
+			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/historic/FeatureServer/1",
+			"visible": false,
+			// "minZoom": 12,
+			"useCors": false,
+			"popup": true,
+			"fields": ["objectid","phenomenon","textforweb"],
+			"queryWidget": {
+				"queries" : [
+					{"name": "phenomenon"}
+				],
+				"outFields": [
+					{"name": "phenomenon", "alias": "Phenomenon"},
+					{"name": "alerttype", "alias": "Alert type"}
+				],
+				"maxAllowableOffset": 10
+			}
+		},
+		{
+			"id": "historic_fireWeatherWarning",
+			"name": "Fire weather warning",
+			"where": "phenomenon = 'Fire Weather Warning'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
 			"opacity": 0.1,
