@@ -81,9 +81,6 @@ function configureClimateRiskAnalysis() {
 	  	$("#results").hide();
 	    $("#error").hide();
 	    $("#errorText").text("");
-	    if (bootleaf.climatePolygon !== undefined){
-		    bootleaf.climatePolygon.clearLayers();
-		  }
 	  })
 
 	  // Display the Draw control on the Query Widget panel
@@ -100,6 +97,10 @@ function configureClimateRiskAnalysis() {
 
 	  // Toggle the LGA control depending on the value of Mode
 	  $("#cboMode").on('change', function(evt){
+	  	// clear any existing bounding boxes
+  		if (bootleaf.climatePolygon !== undefined){
+		    bootleaf.climatePolygon.clearLayers();
+		  }
 	  	if (this.value === 'l') {
 	  		$('.climateLgaControls').show();
 	  		$('.climateDrawControls').hide();
@@ -216,10 +217,19 @@ function runClimateAnalysis(){
         console.error("no probabilities reported")
         resetSubmitButton();
       }
+
+      // Clear the bounding box
+		  if (bootleaf.climatePolygon !== undefined){
+		    bootleaf.climatePolygon.clearLayers();
+		  }
     }).catch(function(error) {
       $("#errorText").text("There was a problem");
       console.error("There was a problem", error);
       resetSubmitButton();
+      // Clear the bounding box
+		  if (bootleaf.climatePolygon !== undefined){
+		    bootleaf.climatePolygon.clearLayers();
+		  }
     });
   }catch(error){
     console.error("There was a problem", error);
