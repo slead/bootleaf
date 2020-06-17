@@ -60,7 +60,7 @@ var config = {
 	},
 
 	// "activeTool": "identify", // options are identify/coordinates/queryWidget
-	"basemaps": ['esriGray', 'esriDarkGray', 'esriStreets', 'OpenStreetMap', "Aerial"],
+	"basemaps": ['esriGray', 'esriImagery', 'OpenStreetMap', 'esriDarkGray', 'esriStreets'],
 
 	// "defaultIcon": {
 	// 	"imagePath": "https://leafletjs.com/examples/custom-icons/",
@@ -74,21 +74,21 @@ var config = {
 	// },
 	"tocCategories": [
 		{
-			"name": "Historic",
+			"name": "EWN Historic Alerts",
 			"layers" : [
 				"historic_bushfireEmergency", "historic_bushfireWarning", "historic_bushfireWatchAct", "historic_fireWeatherWarning",
 				"historic_floodWatch", "historic_severeThunderstorm", "historic_severeWeather", "historic_totalFireBan", "historic_tropicalCyclone", "historic_tsunami"
 			]
 		},
 		{
-			"name": "Events",
+			"name": "Actual Event Post Data",
 			"layers" : [
 				"events_bushfire", "events_drought", "events_earthquake", "events_flood", "events_general", "events_severeThunderstorm", "events_severeWeather",
 				"events_tornado", "events_tropicalCyclone"
 			]
 		},
 		{
-			"name": "Alerts",
+			"name": "EWN Alerts",
 			"layers" : [
 				"alerts_bushfire", "alerts_fireWeatherWarning", "alerts_flood", "alerts_general", "alerts_severeThunderstorm", "alerts_severeWeather",
 				"alerts_tropicalCyclone"
@@ -111,7 +111,7 @@ var config = {
 		// Historic layers
 		{
 			"id": "historic_bushfireEmergency",
-			"name": "Historic - Bushfire emergency",
+			"name": "Historic Alerts - Bushfire emergency",
 			"where": "phenomenon = 'Bushfire Emergency'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -135,7 +135,7 @@ var config = {
 		},
 		{
 			"id": "historic_bushfireWarning",
-			"name": "Historic - Bushfire warning",
+			"name": "Historic Alerts - Bushfire warning",
 			"where": "phenomenon = 'Bushfire Warning'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -159,7 +159,7 @@ var config = {
 		},
 		{
 			"id": "historic_bushfireWatchAct",
-			"name": "Historic - Bushfire watch and act",
+			"name": "Historic Alerts - Bushfire watch and act",
 			"where": "phenomenon = 'Bushfire Watch & Act'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -183,7 +183,7 @@ var config = {
 		},
 		{
 			"id": "historic_fireWeatherWarning",
-			"name": "Historic - Fire weather warning",
+			"name": "Historic Alerts - Fire weather warning",
 			"where": "phenomenon = 'Fire Weather Warning'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -207,7 +207,7 @@ var config = {
 		},
 		{
 			"id": "historic_floodWatch",
-			"name": "Historic - Flood watch",
+			"name": "Historic Alerts - Flood watch",
 			"where": "phenomenon = 'Flood Watch'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -231,7 +231,7 @@ var config = {
 		},
 		{
 			"id": "historic_severeThunderstorm",
-			"name": "Historic - Severe thunderstorm",
+			"name": "Historic Alerts - Severe thunderstorm",
 			"where": "phenomenon = 'Severe Thunderstorm'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -255,7 +255,7 @@ var config = {
 		},
 		{
 			"id": "historic_severeWeather",
-			"name": "Historic - Severe weather",
+			"name": "Historic Alerts - Severe weather",
 			"where": "phenomenon = 'Severe Weather'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -279,7 +279,7 @@ var config = {
 		},
 		{
 			"id": "historic_totalFireBan",
-			"name": "Historic - Total fire ban",
+			"name": "Historic Alerts - Total fire ban",
 			"where": "phenomenon = 'Total Fire Ban'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -303,7 +303,7 @@ var config = {
 		},
 		{
 			"id": "historic_tropicalCyclone",
-			"name": "Historic - Tropical cyclone",
+			"name": "Historic Alerts - Tropical cyclone",
 			"where": "phenomenon = 'Tropical Cyclone'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -327,7 +327,7 @@ var config = {
 		},
 		{
 			"id": "historic_tsunami",
-			"name": "Historic - Tsunami",
+			"name": "Historic Alerts - Tsunami",
 			"where": "phenomenon = 'Tsunami'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -353,7 +353,7 @@ var config = {
 		// Alerts layers
 		{
 			"id": "alerts_bushfire",
-			"name": "Alerts - Bushfire",
+			"name": "EWN Alerts - Bushfire",
 			where: "phenomenon = 'Bushfire'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -376,7 +376,7 @@ var config = {
 		},
 		{
 			"id": "alerts_fireWeatherWarning",
-			"name": "Alerts - Fire Weather Warning",
+			"name": "EWN Alerts - Fire Weather Warning",
 			where: "phenomenon = 'Fire Weather Warning'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -399,7 +399,7 @@ var config = {
 		},
 		{
 			"id": "alerts_flood",
-			"name": "Alerts - Flood",
+			"name": "EWN Alerts - Flood",
 			where: "phenomenon = 'Flood'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -422,7 +422,7 @@ var config = {
 		},
 		{
 			"id": "alerts_general",
-			"name": "Alerts - General",
+			"name": "EWN Alerts - General",
 			where: "phenomenon = 'General'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -445,7 +445,7 @@ var config = {
 		},
 		{
 			"id": "alerts_severeThunderstorm",
-			"name": "Alerts - Severe thunderstorm",
+			"name": "EWN Alerts - Severe thunderstorm",
 			where: "phenomenon = 'Severe Thunderstorm'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -468,7 +468,7 @@ var config = {
 		},
 		{
 			"id": "alerts_severeWeather",
-			"name": "Alerts - Severe Weather",
+			"name": "EWN Alerts - Severe Weather",
 			where: "phenomenon = 'Severe weather'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -491,7 +491,7 @@ var config = {
 		},
 		{
 			"id": "alerts_tropicalCyclone",
-			"name": "Alerts - Tropical cyclone",
+			"name": "EWN Alerts - Tropical cyclone",
 			where: "phenomenon = 'Tropical Cyclone'",
 			"type": "agsFeatureLayer",
 			"tokenRequired": true,
@@ -722,7 +722,8 @@ var config = {
 			"queryWidget": {
 				"queries" : [
 					{"name": "name", "alias": "Cyclone name"},
-					{"name": "category", "alias": "Category", "type": "numeric"}
+					{"name": "category", "alias": "Category", "type": "numeric"},
+					{"name": "date", "alias": "Date", "type": "date"}
 				],
 				"outFields": [
 					{"name": "name", "alias": "Name"},
