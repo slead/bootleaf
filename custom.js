@@ -197,12 +197,32 @@ function runClimateAnalysis(){
       url: url,
       type: 'GET'
     }).done(function(response) {
-      if (response['output probabilities'] !== undefined){
-        $("#tblProbabilities > thead").append("<th>Num. of Events</th><th>Probability</th>");
-        var probabilities = response['output probabilities'];
-        for (var year in probabilities) {
-          var value = probabilities[year];
-          $("#tblProbabilities > tbody").append("<tr><td>" + year + "</td><td>" + value + "</td></tr>");
+      if (response['output_probabilities'] !== undefined){
+        var probabilities = response['output_probabilities'];
+
+        // Add the Poisson component to the table
+        var poisson = probabilities['poisson'];
+        if (poisson !== undefined && poisson['result'] !== undefined && poisson.result.length !== undefined){
+          var result = poisson['result'][0];
+          $("#tblProbabilities > thead").append("<th>Num. of Events</th><th>Probability</th>");
+          for (var year in result) {
+            var value = result[year];
+            $("#tblProbabilities > tbody").append("<tr><td>" + year + "</td><td>" + value + "</td></tr>");
+          }
+        } else {
+          $("#errorText").text('There was a problem calculating the Poisson results');
+        }
+
+        // Add the Mann-Kendall component below the table
+        var mannKendall = probabilities['mannKendall'];
+        if (mannKendall['result'] !== undefined && mannKendall['result'].length !== undefined) {
+          if (mannKendall["result"][0].trend !== undefined) {
+            $("#mannKendall").text(mannKendall['result'][0]['trend']);
+          } else {
+            $("#mannKendall").text(mannKendall['result'][0]);
+          }
+        } else {
+          $("#errorText").text('There was a problem calculating the Mann-Kendall results');
         }
 
         // Reset
