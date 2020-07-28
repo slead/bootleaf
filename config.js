@@ -519,7 +519,7 @@ var config = {
 			"name": "Events - Bushfire",
 			"where": "phenomenon = 'Bushfire'",
 			"type": "agsFeatureLayer",
-			"tokenRequired": false,
+			"tokenRequired": true,
 			"opacity": 0.5,
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/Events/FeatureServer/2",
 			"visible": false,
