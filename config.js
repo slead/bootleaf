@@ -119,7 +119,7 @@ var config = {
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/historic/FeatureServer/1",
 			"visible": false,
 			// "minZoom": 12,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid","phenomenon","textforweb"],
 			"queryWidget": {
@@ -143,7 +143,7 @@ var config = {
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/historic/FeatureServer/1",
 			"visible": false,
 			// "minZoom": 12,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid","phenomenon","textforweb"],
 			"queryWidget": {
@@ -167,7 +167,7 @@ var config = {
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/historic/FeatureServer/1",
 			"visible": false,
 			// "minZoom": 12,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid","phenomenon","textforweb"],
 			"queryWidget": {
@@ -191,7 +191,7 @@ var config = {
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/historic/FeatureServer/1",
 			"visible": false,
 			// "minZoom": 12,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid","phenomenon","textforweb"],
 			"queryWidget": {
@@ -215,7 +215,7 @@ var config = {
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/historic/FeatureServer/1",
 			"visible": false,
 			// "minZoom": 12,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid","phenomenon","textforweb"],
 			"queryWidget": {
@@ -239,7 +239,7 @@ var config = {
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/historic/FeatureServer/1",
 			"visible": false,
 			// "minZoom": 12,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid","phenomenon","textforweb"],
 			"queryWidget": {
@@ -263,7 +263,7 @@ var config = {
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/historic/FeatureServer/1",
 			"visible": false,
 			// "minZoom": 12,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid","phenomenon","textforweb"],
 			"queryWidget": {
@@ -287,7 +287,7 @@ var config = {
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/historic/FeatureServer/1",
 			"visible": false,
 			// "minZoom": 12,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid","phenomenon","textforweb"],
 			"queryWidget": {
@@ -311,7 +311,7 @@ var config = {
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/historic/FeatureServer/1",
 			"visible": false,
 			// "minZoom": 12,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid","phenomenon","textforweb"],
 			"queryWidget": {
@@ -335,7 +335,7 @@ var config = {
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/historic/FeatureServer/1",
 			"visible": false,
 			// "minZoom": 12,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid","phenomenon","textforweb"],
 			"queryWidget": {
@@ -360,7 +360,7 @@ var config = {
 			"opacity": 1,
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/ArcGIS/rest/services/Alerts/FeatureServer/3",
 			"visible": false,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "phenomenon", "textforweb"],
 			"queryWidget": {
@@ -383,7 +383,7 @@ var config = {
 			"opacity": 0.5,
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/ArcGIS/rest/services/Alerts/FeatureServer/3",
 			"visible": false,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "phenomenon", "textforweb"],
 			"queryWidget": {
@@ -406,7 +406,7 @@ var config = {
 			"opacity": 0.5,
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/ArcGIS/rest/services/Alerts/FeatureServer/3",
 			"visible": false,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "phenomenon", "textforweb"],
 			"queryWidget": {
@@ -429,7 +429,7 @@ var config = {
 			"opacity": 0.5,
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/ArcGIS/rest/services/Alerts/FeatureServer/3",
 			"visible": false,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "phenomenon", "textforweb"],
 			"queryWidget": {
@@ -452,7 +452,7 @@ var config = {
 			"opacity": 0.5,
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/ArcGIS/rest/services/Alerts/FeatureServer/3",
 			"visible": false,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "phenomenon", "textforweb"],
 			"queryWidget": {
@@ -475,7 +475,7 @@ var config = {
 			"opacity": 0.5,
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/ArcGIS/rest/services/Alerts/FeatureServer/3",
 			"visible": false,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "phenomenon", "textforweb"],
 			"queryWidget": {
@@ -498,7 +498,7 @@ var config = {
 			"opacity": 0.5,
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/ArcGIS/rest/services/Alerts/FeatureServer/3",
 			"visible": false,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "phenomenon", "textforweb"],
 			"queryWidget": {
@@ -519,12 +519,12 @@ var config = {
 			"name": "Events - Bushfire",
 			"where": "phenomenon = 'Bushfire'",
 			"type": "agsFeatureLayer",
-			"tokenRequired": true,
+			"tokenRequired": false,
 			"opacity": 0.5,
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/Events/FeatureServer/2",
 			"visible": false,
 			// "minZoom": 12,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "phenomenon", "textforweb"],
 			"queryWidget": {
@@ -548,7 +548,7 @@ var config = {
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/Events/FeatureServer/2",
 			"visible": false,
 			// "minZoom": 12,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "phenomenon", "textforweb"],
 			"queryWidget": {
@@ -572,7 +572,7 @@ var config = {
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/Events/FeatureServer/2",
 			"visible": false,
 			// "minZoom": 12,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "phenomenon", "textforweb"],
 			"queryWidget": {
@@ -596,7 +596,7 @@ var config = {
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/Events/FeatureServer/2",
 			"visible": false,
 			// "minZoom": 12,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "phenomenon", "textforweb"],
 			"queryWidget": {
@@ -620,7 +620,7 @@ var config = {
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/Events/FeatureServer/2",
 			"visible": false,
 			// "minZoom": 12,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "phenomenon", "textforweb"],
 			"queryWidget": {
@@ -644,7 +644,7 @@ var config = {
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/Events/FeatureServer/2",
 			"visible": false,
 			// "minZoom": 12,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "phenomenon", "textforweb"],
 			"queryWidget": {
@@ -668,7 +668,7 @@ var config = {
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/Events/FeatureServer/2",
 			"visible": false,
 			// "minZoom": 12,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "phenomenon", "textforweb"],
 			"queryWidget": {
@@ -692,7 +692,7 @@ var config = {
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/Events/FeatureServer/2",
 			"visible": false,
 			// "minZoom": 12,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "phenomenon", "textforweb"],
 			"queryWidget": {
@@ -716,7 +716,7 @@ var config = {
 			"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/Events/FeatureServer/2",
 			"visible": false,
 			// "minZoom": 12,
-			"useCors": false,
+			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "phenomenon", "textforweb"],
 			"queryWidget": {
