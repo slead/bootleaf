@@ -14,7 +14,8 @@ var bootleaf = {
   "clickTolerance": 5,
   "currentTool": null,
   "queryTasks": [],
-  "queryReults": {},
+  "filterTasks": [],
+  "queryResults": {},
   "visibleLayers": [],
   "basemaps": [
     {"id": "MapboxStreets", "type": "mapbox", "theme": "streets", "label": "Streets (MapBox)"},
@@ -379,7 +380,7 @@ function loadMap(){
         });
       }
 
-        // Configure the Query Widget for this layer, if specified in the config
+      // Configure the Query Widget for this layer, if specified in the config
       if (layerConfig.queryWidget !== undefined && layerConfig.queryWidget.queries && layerConfig.queryWidget.queries.length > 0) {
         var queries = []
         for (var queryIdx = 0; queryIdx < layerConfig.queryWidget.queries.length; queryIdx ++){
@@ -388,6 +389,11 @@ function loadMap(){
           queries.push(query);
         }
         bootleaf.queryTasks.push({"layerName": layerConfig.name, "layerId": layerConfig.id, "queries": queries});
+      }
+
+      // Configure the Filter Widget for this layer, if specified in the config
+      if (layerConfig.filter !== undefined) {
+        bootleaf.filterTasks.push({"layerName": layerConfig.name, "layerId": layerConfig.id, "filter": layerConfig.filter});
       }
 
       if (layer !== undefined) {
@@ -614,9 +620,16 @@ function loadMap(){
 
   // Decide whether to enable the queryWidget tool
   if (!bootleaf.queryTasks || bootleaf.queryTasks.length === 0){
-    $("#liQueryWidget").addClass('disabled');
+    $("#queryWidget-btn").hide();
   } else {
-    $("#liQueryWidget").removeClass('disabled');
+    $("#queryWidget-btn").show();
+  }
+
+  // Decide whether to enable the filterWidget tool
+  if (!bootleaf.filterTasks || bootleaf.filterTasks.length === 0){
+    $("#filterWidget-btn").hide();
+  } else {
+    $("#filterWidget-btn").show();
   }
 
   // Enable Identify if any identifiable layers are present
@@ -638,6 +651,11 @@ function loadMap(){
     } else if (config.activeTool === 'queryWidget'){
       if (bootleaf.queryTasks && bootleaf.queryTasks.length > 0){
         configureQueryWidget();
+        $('*[data-tool="' +  config.activeTool + '"]').addClass("active");
+      }
+    } else if (config.activeTool === 'filterWidget'){
+      if (bootleaf.filterTasks && bootleaf.filterTasks.length > 0){
+        configureFilterWidget();
         $('*[data-tool="' +  config.activeTool + '"]').addClass("active");
       }
     }
@@ -1523,6 +1541,248 @@ function handleQueryError(errMessage){
 
 function resetQueryOutputTable(){
   $("#queryResults").html('<span id="ajaxLoading"></span><table id="tblQueryResults" class="table table-condensed table-hover"></table><div id="exportButtons"></div>');
+}
+
+/**************************************************************************************************/
+// FILTER WIDGET START
+/**************************************************************************************************/
+
+function configureFilterWidget(){
+  switchOffTools();
+  bootleaf.activeTool = "filterWidget";
+
+  if (bootleaf.filterTasks) {
+    if (bootleaf.filterTasks.length > 0){
+
+      $("#liFilterWidget").removeClass('disabled');
+
+      // Configure the handlebars template for the Filter Widget. The layer names are inserted here,
+      // while the field and operator values are inserted elsewhere
+      var filterSource = $("#filter-widget-template").html();
+      var filterTemplate = Handlebars.compile(filterSource);
+
+      var layerNames = $.map(bootleaf.filterTasks, function( val, i ) {
+        var name = val.layerName;
+        if (name === undefined || name === '') {
+          name = val.layerId;
+        }
+
+        var output = {
+          "id": val.layerId,
+          "name": name
+        }
+        return output;
+      });
+
+      var html = filterTemplate(layerNames);
+      resetSidebar("Filter", html);
+
+    } else {
+      $("#sidebarContents").html("<p><span class='info'>There are no filter-able layers in the map</span></p>");
+      $("#liFilterWidget").addClass('disabled');
+    }
+
+  } else {
+    $("#sidebarContents").html("<p><span class='info'>There are no filter-able layers in the map</span></p>");
+    $("#liFilterWidget").addClass('disabled');
+  }
+
+  // Update the filter field names when the filter layer selection changes
+  $("#filterWidgetLayer").off("change")
+  $("#filterWidgetLayer").on("change", function(e){
+    addFilter();
+  });
+
+  $("#sidebar").show("slow");
+  addFilter();
+
+}
+
+function addFilter(){
+  var layerName = $("#filterWidgetLayer").val();
+  var filterSource = $("#filter-template").html();
+  var filterTemplate = Handlebars.compile(filterSource);
+  var html = filterTemplate(filterSource);
+  $("#filterSection").html(html);
+
+  // Seed the filter field dropdown based on the selected layer
+  var layerId = $("#filterWidgetLayer option:selected" ).val();
+
+  // Update the Fields dropdown on the Filter widget with the filter fields for this layer
+  $("#filterWidgetField").empty();
+
+  var fieldOptions = [];
+
+  for (var i=0; i < bootleaf.filterTasks.length; i++){
+    var filterTask = bootleaf.filterTasks[i];
+    if (filterTask.layerId === layerName) {
+      var filter = filterTask.filter;
+      var fieldName = filter.name;
+      var fieldAlias = filter.alias || fieldName;
+      var fieldType = filter.type || "text";
+      var fieldDefaultOperator = filter.defaultOperator || "=";
+      var option = '<option value="' + fieldName + '" data-fieldtype="';
+      option += fieldType + '" + data-defaultoperator ="' + fieldDefaultOperator + '"';
+      option += '>' + fieldAlias + "</option>"
+      fieldOptions.push(option);
+    }
+  }
+  $("#filterWidgetField").append(fieldOptions);
+
+  // Update the filter operator when the filter field selection changes
+  updateFilterOperator($("#filterWidgetField option:selected")[0]);
+  $("#filterWidgetField").off("change");
+  $("#filterWidgetField").on("change", function(){
+    updateFilterOperator(this.options[this.selectedIndex]);
+  });
+
+  // Set the UI to match any existing filter value
+  var layer = bootleaf.layers.find(x => x.layerConfig.id === layerId);
+  if (layer.layerConfig.filter.value !== undefined) {
+    $("#filterWidgetValue").val(layer.layerConfig.filter.value);
+  } else {
+    $("#filterWidgetValue").val("");
+  }
+  if (layer.layerConfig.filter.operator !== undefined) {
+    $("#filterWidgetOperator").val(layer.layerConfig.filter.operator);
+  }
+
+  $("#btnApplyFilter").on('click', applyFilter);
+}
+
+function updateFilterOperator(option){
+
+  // Update the Operators dropdown on the Filter widget with the applicable options for this field type
+  $("#filterWidgetOperator").empty();
+  $("#filterWidgetValue").val("");
+  var defaultOperator = option.dataset['defaultoperator'] || '=';
+
+  var operators = [
+    {"value": "=", "alias": "is"},
+    {"value": "starts with"},
+    {"value": "ends with"},
+    {"value": "contains"}
+  ];
+  if (option !== undefined && option.dataset['fieldtype'] !== undefined){
+    var fieldType = option.dataset["fieldtype"];
+    if (fieldType === 'numeric'){
+      operators = [
+        {"value": "<", "alias": "is less than"},
+        {"value": "=", "alias": "is equal to"},
+        {"value": ">", "alias": "is greater than"}
+      ];
+    }
+    // TODO: add other field types, eg date, etc
+  }
+
+  var operatorOptions = $.map( operators, function( val, i ) {
+    var alias = val.alias || val.value;
+    var opt = '<option value="' + val.value + '"';
+    if (defaultOperator === val.value) {
+      opt += " selected='selected'";
+    }
+    opt += '>' + alias + "</option>"
+    return opt;
+  });
+  $("#filterWidgetOperator").append(operatorOptions);
+
+}
+
+function applyFilter() {
+  $("#ajaxLoading").show();
+  var layerId = $("#filterWidgetLayer option:selected").val()
+  var fieldName = $("#filterWidgetField option:selected").val();
+  var fieldType = $("#filterWidgetField option:selected")[0].dataset['fieldtype'];
+  var operator = $("#filterWidgetOperator option:selected").val();
+  var filterText = $("#filterWidgetValue").val().toUpperCase();
+
+  // Obtain the filter syntax for this layer
+  for(var layerIdx=0; layerIdx < config.layers.length; layerIdx++){
+    var layerConfig = config.layers[layerIdx];
+    if (layerConfig.id === layerId){
+
+      // Get a handle on the actual layer object
+      var layer = bootleaf.layers.find(x => x.layerConfig.id === layerId);
+
+      // Set the value of the filter, so we can get the UI to match next
+      // time it's loaded
+      layer.layerConfig.filter.value = filterText;
+      layer.layerConfig.filter.operator = operator;
+
+      // Ensure that any hard-coded where clause is honoured here
+      var where;
+      var filter;
+      if (layerConfig.layerDefs !== undefined){
+        for (var key in layerConfig.layerDefs){
+          var layerDefFilter = layerConfig.layerDefs[key];
+          if (where === undefined){
+            where = "(" + layerDefFilter + ")";
+          } else {
+            where += " and (" + layerDefFilter + ")";
+          }
+        }
+      } else if (layerConfig.where !== undefined){
+        where = layerConfig.where;
+      }
+
+      // ArcGIS and GeoServer filters use very different syntax, to treat them differently from this point
+      if (layerConfig.type === 'agsDynamicLayer' || layerConfig.type === 'agsFeatureLayer') {
+
+        // Add or use any filter parameters entered by the user
+        if (fieldType === 'numeric'){
+          filter = fieldName + operator + filterText;
+        } else {
+
+          if(filterText === "*" || filterText === "") {
+            if (where === undefined) {
+              filter = "1=1";
+            }
+          } else if (operator === "starts with"){
+            filter = 'upper(' + fieldName + ") like '" + filterText + "%'";
+          } else if (operator === "ends with"){
+            filter = 'upper(' + fieldName + ") like '%" + filterText + "'";
+          } else if (operator === "contains"){
+            filter = 'upper(' + fieldName + ") like '%" + filterText + "%'";
+          } else {
+            filter = 'upper(' + fieldName + ') ' + operator + "'" + filterText + "'";
+          }
+        }
+
+        if (where === undefined){
+          where = "(" + filter + ")";
+        } else if (filter !== undefined) {
+          where += " and (" + filter + ")";
+        }
+
+        if (layerConfig.type === 'agsDynamicLayer') {
+          try{
+            // Filter on the dynamic layer's layer list
+            var layerDefs = new Object();
+            for (var l = 0; l < layerConfig.layers.length; l++){
+              layerDefs[layerConfig.layers[l]] = where;
+            }
+            layer.setLayerDefs(layerDefs);
+          } catch(error) {
+            $.growl.warning({ title: "Filter Widget", message: "There was a problem filtering this layer"});
+            console.error(error)
+          }
+        } else if (layerConfig.type === 'agsFeatureLayer') {
+          layer.setWhere(where, handleFilterError);
+        }
+
+      }
+
+      console.log("filtering layer", layerId, "where:", where)
+
+    }
+  }
+
+}
+
+function handleFilterError(errMessage){
+  if (errMessage && errMessage.details){
+    $.growl.warning({ title: "Filter Widget", message: errMessage.details});
+  }
 }
 
 /**************************************************************************************************/

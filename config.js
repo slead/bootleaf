@@ -58,10 +58,8 @@ var config = {
 			]
 		}
 	},
-
 	// "activeTool": "identify", // options are identify/coordinates/queryWidget
 	"basemaps": ['esriGray', 'esriImagery', 'OpenStreetMap', 'esriDarkGray', 'esriStreets'],
-
 	// "defaultIcon": {
 	// 	"imagePath": "https://leafletjs.com/examples/custom-icons/",
 	// 	"iconUrl": "leaf-green.png",
@@ -270,6 +268,26 @@ var config = {
 				"queries" : [
 					{"name": "phenomenon"}
 				],
+				"layerIndex": 3,
+				"maxAllowableOffset": 0.001
+			},
+			"filter": {"name": "POP2000", "alias": "Population", "type": "numeric"}
+		},
+		{
+			"id": "us_states",
+			"name": "US States, Pop > 5m (dyn)",
+			"type": "agsDynamicLayer",
+			"url": "https://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Demographics/ESRI_Census_USA/MapServer/",
+			"layers": [5],
+			"format": 'png24',
+			"transparent": true,
+			"layerDefs": {5:"POP2007 > 5000000"},
+			"useCors": false,
+			"visible": true,
+			"identify": {
+				"layerName": "states",
+				"primaryField": "STATE_NAME",
+>>>>>>> b7d137e37948d4319cc4580f54cf05ed8b6b8f99
 				"outFields": [
 					{"name": "phenomenon", "alias": "Phenomenon"},
 					{"name": "alerttype", "alias": "Alert type"}

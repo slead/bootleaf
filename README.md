@@ -8,6 +8,7 @@ BootLeaf
  - [Table of Contents](#table-of-contents)
  - [Identify](#identify)
  - [Query](#query)
+ - [Filter](#filter)
  - [Custom code](#custom-code)
  - [ArcGIS authorisation](#authorisation)
  - [Known issues](#issues)
@@ -293,9 +294,7 @@ To enable this, add the `identify` object as an option under a Dynamic or WMS la
 
 If `outFields` is not specified against the `identify` object, the layer's `outFields` will be used. See the `outFields` section above for more information on the field specification.
 
-Note: If the ArcGIS Server REST API lists an alias against a field, this should be used in place of the field name. Eg in the case of [this layer](https://vmgeospatialdev.erga.aubootleaf.corp/arcgis/rest/services/admin_boundaries/EmbargoRegions_BOM_201506/MapServer/1) the *BNAME* field has an alias, so (somewhat confusingly) the *alias* should actually be specified in the `name` field:
-
-*BNAME ( type: esriFieldTypeString , alias: BOM river region name)*
+Note: If the ArcGIS Server REST API lists an alias against a field, the alias should be used in place of the field name.
 
 When the Identify tool is activated under the > Tools menu, and the layer is visible, clicking on the map will return the value of the `primaryField` at the location clicked. The results for all identify-able layers are shown in the pull-out sidebar.
 
@@ -328,7 +327,7 @@ To enable this, add the `queryWidget` object as an option under an ArcGIS Dynami
 
 #### Query Widget Parameters
 
-- `layerIndex` - the layer's index according to its REST URL. Applies to ArcGIS Dynamic layers only
+- `layerIndex` - Applies to ArcGIS Dynamic layers only (the query widget works best when there is a single layer specified under this dynamic layer, so this parameter holds the layer's index according to its REST URL)
 - `maxAllowableOffset` - this parameter allows the query results to be returned faster, by generalising the output geometry by the specified amount. The units are whatever units the dataset is stored in (eg decimal degrees, metres, etc). This applies to ArcGIS layers only
 - `queries` - an array of query objects, consisting of:
   - `name` - the name of the field to query
@@ -343,6 +342,15 @@ If the query layer uses a projection other than lat/long, the layer's coordinate
 
 *Note: the Query Tool is only enabled if there are queryable layers on the map.*
 
+## [Filter](#filter)
+
+The filter widget allows for dynamic filtering of ArcGIS Feature and Dynamic layers. Currently the filter is limited to a single field, which is specified in the configuration file as:
+
+`"filter": {"name": "<field on which to filter>", "alias": "<field alias>", "type": "<field type>"}`
+
+- `type` - defaults to text, or use `numeric` to allow the correct syntax for numerical fields. Other field types may be added in future.
+
+The filter honours any `where` or `layerDefs` clauses which have been previously set in the config file.
 
 ## [Custom code](#custom-code)
 The file custom.js can be used to personalise the map by writing additional functionality which interacts with the Bootleaf map, but without requiring any changes to the Bootleaf source code. This allows for easier upgrading to the latest Bootleaf release without any rework of your custom code.
