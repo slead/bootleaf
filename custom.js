@@ -210,13 +210,16 @@ function runClimateAnalysis(){
           var html = resultsTemplate(results);
           $("#results").html(html);
 
-
-          // $("#tblProbabilities > thead").append("<th>Num. of Events</th><th>Probability</th>");
           var probabilities = probabilities;
+          $("#tblProbabilities > thead").append("<th>Num. of Events</th><th>Probability</th>");
           for (var year in probabilities) {
             var value = probabilities[year];
-            // $("#tblProbabilities > tbody").append("<tr><td>" + year + "</td><td>" + value + "</td></tr>");
+            $("#tblProbabilities > tbody").append("<tr><td>" + year + "</td><td>" + value + "</td></tr>");
           }
+
+          $("#btnShowAllResults").on("click", function(){
+            $("#tblProbabilities").toggle();
+          });
         } else {
           $("#errorText").text('There was a problem calculating the Poisson results');
         }
