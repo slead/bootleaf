@@ -201,11 +201,21 @@ function runClimateAnalysis(){
         var probabilities = response['output_probabilities'];
 
         if (probabilities !== undefined){
-          $("#tblProbabilities > thead").append("<th>Num. of Events</th><th>Probability</th>");
+          var results = {
+            prob100: probabilities[100],
+            numYears: $("#cboTime").val()
+          }
+          var climateResults = $("#climate-results").html();
+          resultsTemplate = Handlebars.compile(climateResults);
+          var html = resultsTemplate(results);
+          $("#results").html(html);
+
+
+          // $("#tblProbabilities > thead").append("<th>Num. of Events</th><th>Probability</th>");
           var probabilities = probabilities;
           for (var year in probabilities) {
             var value = probabilities[year];
-            $("#tblProbabilities > tbody").append("<tr><td>" + year + "</td><td>" + value + "</td></tr>");
+            // $("#tblProbabilities > tbody").append("<tr><td>" + year + "</td><td>" + value + "</td></tr>");
           }
         } else {
           $("#errorText").text('There was a problem calculating the Poisson results');
