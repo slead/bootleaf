@@ -392,8 +392,8 @@ function loadMap(){
       }
 
       // Configure the Filter Widget for this layer, if specified in the config
-      if (layerConfig.filter !== undefined) {
-        bootleaf.filterTasks.push({"layerName": layerConfig.name, "layerId": layerConfig.id, "filter": layerConfig.filter});
+      if (layerConfig.filters !== undefined) {
+        bootleaf.filterTasks.push({"layerName": layerConfig.name, "layerId": layerConfig.id, "filters": layerConfig.filters});
       }
 
       if (layer !== undefined) {
@@ -1592,14 +1592,18 @@ function configureFilterWidget(){
   $("#filterWidgetLayer").off("change")
   $("#filterWidgetLayer").on("change", function(e){
     addFilter();
+    updateFilterParams("layer")
   });
 
   $("#sidebar").show("slow");
   addFilter();
+  $("#btnApplyFilter").on('click', applyFilter);
+  $("#btnRemoveFilter").on('click', removeFilter);
 
 }
 
 function addFilter(){
+  console.log("add filter")
   var layerName = $("#filterWidgetLayer").val();
   var filterSource = $("#filter-template").html();
   var filterTemplate = Handlebars.compile(filterSource);
@@ -1617,15 +1621,18 @@ function addFilter(){
   for (var i=0; i < bootleaf.filterTasks.length; i++){
     var filterTask = bootleaf.filterTasks[i];
     if (filterTask.layerId === layerName) {
-      var filter = filterTask.filter;
-      var fieldName = filter.name;
-      var fieldAlias = filter.alias || fieldName;
-      var fieldType = filter.type || "text";
-      var fieldDefaultOperator = filter.defaultOperator || "=";
-      var option = '<option value="' + fieldName + '" data-fieldtype="';
-      option += fieldType + '" + data-defaultoperator ="' + fieldDefaultOperator + '"';
-      option += '>' + fieldAlias + "</option>"
-      fieldOptions.push(option);
+      var filters = filterTask.filters;
+      for (var f=0; f < filters.length; f++){
+        var filter = filters[f];
+        var fieldName = filter.name;
+        var fieldAlias = filter.alias || fieldName;
+        var fieldType = filter.type || "text";
+        var fieldDefaultOperator = filter.defaultOperator || "=";
+        var option = '<option value="' + fieldName + '" data-fieldtype="';
+        option += fieldType + '" + data-defaultoperator ="' + fieldDefaultOperator + '"';
+        option += '>' + fieldAlias + "</option>"
+        fieldOptions.push(option);
+      }
     }
   }
   $("#filterWidgetField").append(fieldOptions);
@@ -1635,21 +1642,71 @@ function addFilter(){
   $("#filterWidgetField").off("change");
   $("#filterWidgetField").on("change", function(){
     updateFilterOperator(this.options[this.selectedIndex]);
+    updateFilterParams("field")
   });
 
+  $("#filterWidgetValue").off("change");
+  $("#filterWidgetValue").on("change", function(){
+    updateFilterParams("value")
+  });
+
+  $("#filterWidgetOperator").off("change");
+  $("#filterWidgetOperator").on("change", function(){
+    updateFilterParams("operator")
+  });
+
+
   // Set the UI to match any existing filter value
-  var layer = bootleaf.layers.find(x => x.layerConfig.id === layerId);
-  if (layer.layerConfig.filter.value !== undefined) {
-    $("#filterWidgetValue").val(layer.layerConfig.filter.value);
+  var filterTask = bootleaf.filterTasks.find(x => x.layerId === layerId);
+  var fieldName = $("#filterWidgetField option:selected").val();
+  var filter = filterTask.filters.find(x => x.name === fieldName);
+
+  if (filter) {
+    if (filter.value !== undefined) {
+      $("#filterWidgetValue").val(filter.value);
+    }
+    if (filter.operator !== undefined) {
+      $("#filterWidgetOperator").val(filter.operator);
+    }
   } else {
     $("#filterWidgetValue").val("");
   }
-  if (layer.layerConfig.filter.operator !== undefined) {
-    $("#filterWidgetOperator").val(layer.layerConfig.filter.operator);
+
+}
+
+function updateFilterParams(control){
+  console.log("update filter params", control)
+
+  var layerId = $("#filterWidgetLayer option:selected").val()
+  var fieldName = $("#filterWidgetField option:selected").val();
+  var fieldType = $("#filterWidgetField option:selected")[0].dataset['fieldtype'];
+  var operator = $("#filterWidgetOperator option:selected").val();
+  var filterText = $("#filterWidgetValue").val().toUpperCase();
+
+  // Persist the value of the filter, so we can apply it later. Or apply a pre-existing value
+  var filterTask = bootleaf.filterTasks.find(x => x.layerId === layerId);
+  var filter = filterTask.filters.find(x => x.name === fieldName);
+  if (filter){
+    // // if (filter.value !== undefined && filter.operator !== undefined) {
+    //   $("#filterWidgetValue").val(filterText);
+    //   if (control !== "value") {
+    //     filter.value = filterText;
+    //   }
+    //   // if (control !== "operator") {
+    //     // $("#filterWidgetOperator select").val(filter.operator);
+    //     $('#filterWidgetOperator option[value="' + filter.operator + '"]').attr('selected','selected');
+    //   // }
+    // } else {
+      if (filterText !== "") {
+        filter.value = filterText;
+        filter.operator = operator;
+      } else {
+        delete filter.value;
+        delete filter.operator;
+      }
+    // }
   }
 
-  $("#btnApplyFilter").on('click', applyFilter);
-  $("#btnRemoveFilter").on('click', removeFilter);
 }
 
 function updateFilterOperator(option){
@@ -1693,10 +1750,6 @@ function updateFilterOperator(option){
 function applyFilter() {
   console.log("applying filter")
   var layerId = $("#filterWidgetLayer option:selected").val()
-  var fieldName = $("#filterWidgetField option:selected").val();
-  var fieldType = $("#filterWidgetField option:selected")[0].dataset['fieldtype'];
-  var operator = $("#filterWidgetOperator option:selected").val();
-  var filterText = $("#filterWidgetValue").val().toUpperCase();
 
   // Obtain the filter syntax for this layer
   for(var layerIdx=0; layerIdx < config.layers.length; layerIdx++){
@@ -1706,14 +1759,10 @@ function applyFilter() {
       // Get a handle on the actual layer object
       var layer = bootleaf.layers.find(x => x.layerConfig.id === layerId);
 
-      // Set the value of the filter, so we can get the UI to match next
-      // time it's loaded
-      layer.layerConfig.filter.value = filterText;
-      layer.layerConfig.filter.operator = operator;
-
       // Ensure that any hard-coded where clause is honoured here
       var where;
       var filter;
+      var filterTask = bootleaf.filterTasks.find(x => x.layerId === layerId);
       if (layerConfig.layerDefs !== undefined){
         for (var key in layerConfig.layerDefs){
           var layerDefFilter = layerConfig.layerDefs[key];
@@ -1727,27 +1776,60 @@ function applyFilter() {
         where = layerConfig.where;
       }
 
-      // ArcGIS and GeoServer filters use very different syntax, so treat them differently from this point
+      // Build the filter where clause from the saved filter
       if (layerConfig.type === 'agsDynamicLayer' || layerConfig.type === 'agsFeatureLayer') {
 
-        // Add or use any filter parameters entered by the user
-        if (fieldType === 'numeric'){
-          filter = fieldName + operator + filterText;
-        } else {
+        // Add or use any filter parameters entered by the user. This section is pretty
+        // ugly and could be refactored.....
+        for (var filterIdx in filterTask.filters) {
+          var filterDef = filterTask.filters[filterIdx];
+          if (filterDef.value !== undefined && filterDef.operator !== undefined){
 
-          if(filterText === "*" || filterText === "") {
-            if (where === undefined) {
-              filter = "1=1";
+            if (filterDef.type === 'numeric'){
+              if (filter === undefined){
+                filter = filterDef.name + filterDef.operator + filterDef.value;
+              } else {
+                filter += " AND " + filterDef.name + filterDef.operator + filterDef.value;
+              }
+            } else {
+
+              if(filterDef.value === "*" || filterDef.value === "") {
+                if (where === undefined) {
+                  filter = "1=1";
+                }
+              } else if (operator === "starts with"){
+                if (filter === undefined) {
+                  filter = 'upper(' + filterDef.name + ") like '" + filterDef.value + "%'";
+                } else {
+                  filter += " AND " + 'upper(' + filterDef.name + ") like '" + filterDef.value + "%'";
+                }
+              } else if (operator === "ends with"){
+                if (filter === undefined) {
+                  filter = 'upper(' + filterDef.name + ") like '%" + filterDef.value + "'";
+                } else {
+                  filter += " AND " + 'upper(' + filterDef.name + ") like '%" + filterDef.value + "'";
+                }
+              } else if (operator === "contains"){
+                if (filter === undefined) {
+                  filter = 'upper(' + filterDef.name + ") like '%" + filterDef.value + "%'";
+                } else {
+                  filter += " AND " + 'upper(' + filterDef.name + ") like '%" + filterDef.value + "%'";
+                }
+              } else {
+                if (filter === undefined) {
+                  filter = 'upper(' + filterDef.name + ') ' + filterDef.operator + "'" + filterDef.value + "'";
+                } else {
+                  filter += " AND " + 'upper(' + filterDef.name + ') ' + filterDef.operator + "'" + filterDef.value + "'";
+                }
+              }
             }
-          } else if (operator === "starts with"){
-            filter = 'upper(' + fieldName + ") like '" + filterText + "%'";
-          } else if (operator === "ends with"){
-            filter = 'upper(' + fieldName + ") like '%" + filterText + "'";
-          } else if (operator === "contains"){
-            filter = 'upper(' + fieldName + ") like '%" + filterText + "%'";
-          } else {
-            filter = 'upper(' + fieldName + ') ' + operator + "'" + filterText + "'";
           }
+        }
+
+        // trap any errors in the filter
+        if (filter === undefined || filter.indexOf("undefined") > -1) {
+          $.growl.warning({ title: "Filter Widget", message: "There was a problem filtering this layer. Please check the parameters"});
+          return;
         }
 
         if (where === undefined){
@@ -1792,6 +1874,14 @@ function removeFilter() {
 
       // Get a handle on the actual layer object
       var layer = bootleaf.layers.find(x => x.layerConfig.id === layerId);
+
+      // Reset the value of the filter
+      var filterTask = bootleaf.filterTasks.find(x => x.layerId === layerId);
+      for (var idx in filterTask.filters){
+        var filter = filterTask.filters[idx];
+        delete filter.value;
+        delete filter.operator;
+      }
 
       // Ensure that any hard-coded where clause is honoured here
       var where;
@@ -1838,6 +1928,9 @@ function removeFilter() {
 
     }
   }
+
+  // Clear the UI
+  $("#filterWidgetValue").val("");
 
 }
 
