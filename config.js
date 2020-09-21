@@ -42,21 +42,21 @@ var config = {
 		"history": {
 			"position": "bottomleft"
 		},
-		"bookmarks": {
-			"position": "bottomright",
-			"places": [
-				{
-				"latlng": [
-					40.7916, -73.9924
-				],
-				"zoom": 12,
-				"name": "Manhattan",
-				"id": "a148fa354ba3",
-				"editable": true,
-				"removable": true
-				}
-			]
-		}
+		// "bookmarks": {
+		// 	"position": "bottomright",
+		// 	"places": [
+		// 		{
+		// 		"latlng": [
+		// 			40.7916, -73.9924
+		// 		],
+		// 		"zoom": 12,
+		// 		"name": "Manhattan",
+		// 		"id": "a148fa354ba3",
+		// 		"editable": true,
+		// 		"removable": true
+		// 		}
+		// 	]
+		// }
 	},
 	// "activeTool": "identify", // options are identify/coordinates/queryWidget
 	"basemaps": ['esriGray', 'esriImagery', 'OpenStreetMap', 'esriDarkGray', 'esriStreets'],
@@ -533,8 +533,10 @@ var config = {
 				"maxAllowableOffset": 10
 			},
 
-			"filter": {"name": "area_sqkm", "alias": "Area (sq km)", "type": "numeric"}
-
+			"filters": [
+				{"name": "population", "alias": "Population", "type": "numeric"},
+				{"name": "area_sqkm", "alias": "Area (sq km)", "type": "numeric"}
+			]
 
 		},
 		{
