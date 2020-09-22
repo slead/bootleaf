@@ -81,3 +81,13 @@ div.dataTables_wrapper div.dataTables_paginate {
 .climateLgaControls, .climateDrawControls {
   display: none;
 }
+
+#filterOutput {
+  margin-top: 15px;
+  font-style: italic;
+  font-size: 14px;
+  color: white;
+  padding: 15px;
+  display: none;
+}
+
