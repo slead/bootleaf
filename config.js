@@ -2,7 +2,7 @@ var config = {
 	// Climate Risk Analysis parameters
   lgaSourceUrl: "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/LGA_2019_AUST_wgs84/FeatureServer/0/",
   lgaNameField: "LGA_NAME19",
-  pythonUrl: "http://climaterisk.ewn.com.au:5000/risk?",
+  pythonUrl: "http://3.104.227.208:5000/risk",
 
 	"requireArcGISLogin": true, // Does the user need to log in to ArcGIS Online or ArcGIS Server?
 	"tokenUrl": 'https://www.arcgis.com/sharing/generateToken', // ArcGIS token generation URL

@@ -186,7 +186,8 @@ function runClimateAnalysis(){
 	  }
 
 
-    var url = config.pythonUrl + "hazard=" + hazard + "&time=" + timePeriod + "&mode=" + mode;
+    var url = config.pythonUrl + "?test=poi&hazard=" + hazard + "&time=" + timePeriod + "&mode=" + mode;
+
     if (mode === 'l') {
     	url += "&name=" + lga;
     } else if (mode === 'd'){
@@ -197,8 +198,8 @@ function runClimateAnalysis(){
       url: url,
       type: 'GET'
     }).done(function(response) {
-      if (response['output_probabilities'] !== undefined){
-        var probabilities = response['output_probabilities'];
+      if (response['output'] !== undefined){
+        var probabilities = response['output'];
 
         if (probabilities !== undefined){
           var results = {
