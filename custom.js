@@ -87,11 +87,11 @@ function configureClimateRiskAnalysis() {
 		bootleaf.climateDrawControl = new L.Control.Draw({
       position: 'topright',
       draw: {
-          polygon: false,
+          polygon: true,
           polyline: false,
           circle: false,
           marker: false,
-          rectangle: true
+          rectangle: false
       }
     });
 
@@ -170,7 +170,7 @@ function runClimateAnalysis(){
 		  }
 		} else if (mode === 'd') {
 			try{
-				var loc = JSON.stringify(bootleaf.climatePolygon.toGeoJSON().features[0].geometry.coordinates);
+				var loc = JSON.stringify(bootleaf.climatePolygon.toGeoJSON().features[0].geometry.coordinates[0]);
 			} catch(err){
 				$("#errorText").text("Please draw a polygon to represent the area of interest");
 		    resetSubmitButton();
