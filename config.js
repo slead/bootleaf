@@ -100,21 +100,16 @@ var config = {
 			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "TextForWeb"],
-			"queryWidget": {
-				"queries" : [
-					{"name": "Phenomenon"}
-				],
-				"outFields": [
-					{"name": "Phenomenon", "alias": "Phenomenon"},
-					{"name": "alerttype", "alias": "Alert type"}
-				],
-				"maxAllowableOffset": 10
-			},
-			"filters": [
-				{"name": "population", "alias": "Population", "type": "numeric"},
-				{"name": "buildings", "alias": "Buildings", "type": "numeric"},
-				{"name": "area_sqkm", "alias": "Area (sq km)", "type": "numeric"}
-			]
+			// "queryWidget": {
+			// 	"queries" : [
+			// 		{"name": "Phenomenon"}
+			// 	],
+			// 	"outFields": [
+			// 		{"name": "Phenomenon", "alias": "Phenomenon"},
+			// 		{"name": "alerttype", "alias": "Alert type"}
+			// 	],
+			// 	"maxAllowableOffset": 10
+			// }
 		},
 		{
 			"id": "alerts_bushfire_watchact",
@@ -128,21 +123,16 @@ var config = {
 			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "TextForWeb"],
-			"queryWidget": {
-				"queries" : [
-					{"name": "Phenomenon"}
-				],
-				"outFields": [
-					{"name": "Phenomenon", "alias": "Phenomenon"},
-					{"name": "alerttype", "alias": "Alert type"}
-				],
-				"maxAllowableOffset": 10
-			},
-			"filters": [
-				{"name": "population", "alias": "Population", "type": "numeric"},
-				{"name": "buildings", "alias": "Buildings", "type": "numeric"},
-				{"name": "area_sqkm", "alias": "Area (sq km)", "type": "numeric"}
-			]
+			// "queryWidget": {
+			// 	"queries" : [
+			// 		{"name": "Phenomenon"}
+			// 	],
+			// 	"outFields": [
+			// 		{"name": "Phenomenon", "alias": "Phenomenon"},
+			// 		{"name": "alerttype", "alias": "Alert type"}
+			// 	],
+			// 	"maxAllowableOffset": 10
+			// }
 		},
 		{
 			"id": "alerts_fireWeatherWarning",
@@ -156,16 +146,16 @@ var config = {
 			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "TextForWeb"],
-			"queryWidget": {
-				"queries" : [
-					{"name": "Phenomenon"}
-				],
-				"outFields": [
-					{"name": "Phenomenon", "alias": "Phenomenon"},
-					{"name": "alerttype", "alias": "Alert type"}
-				],
-				"maxAllowableOffset": 10
-			}
+			// "queryWidget": {
+			// 	"queries" : [
+			// 		{"name": "Phenomenon"}
+			// 	],
+			// 	"outFields": [
+			// 		{"name": "Phenomenon", "alias": "Phenomenon"},
+			// 		{"name": "alerttype", "alias": "Alert type"}
+			// 	],
+			// 	"maxAllowableOffset": 10
+			// }
 		},
 		{
 			"id": "alerts_flood",
@@ -179,16 +169,16 @@ var config = {
 			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "TextForWeb"],
-			"queryWidget": {
-				"queries" : [
-					{"name": "Phenomenon"}
-				],
-				"outFields": [
-					{"name": "Phenomenon", "alias": "Phenomenon"},
-					{"name": "alerttype", "alias": "Alert type"}
-				],
-				"maxAllowableOffset": 10
-			}
+			// "queryWidget": {
+			// 	"queries" : [
+			// 		{"name": "Phenomenon"}
+			// 	],
+			// 	"outFields": [
+			// 		{"name": "Phenomenon", "alias": "Phenomenon"},
+			// 		{"name": "alerttype", "alias": "Alert type"}
+			// 	],
+			// 	"maxAllowableOffset": 10
+			// }
 		},
 		{
 			"id": "alerts_severe_hailstorm",
@@ -202,16 +192,16 @@ var config = {
 			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "TextForWeb"],
-			"queryWidget": {
-				"queries" : [
-					{"name": "Phenomenon"}
-				],
-				"outFields": [
-					{"name": "Phenomenon", "alias": "Phenomenon"},
-					{"name": "alerttype", "alias": "Alert type"}
-				],
-				"maxAllowableOffset": 10
-			}
+			// "queryWidget": {
+			// 	"queries" : [
+			// 		{"name": "Phenomenon"}
+			// 	],
+			// 	"outFields": [
+			// 		{"name": "Phenomenon", "alias": "Phenomenon"},
+			// 		{"name": "alerttype", "alias": "Alert type"}
+			// 	],
+			// 	"maxAllowableOffset": 10
+			// }
 		},
 		{
 			"id": "alerts_severeThunderstorm",
@@ -225,16 +215,16 @@ var config = {
 			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "TextForWeb"],
-			"queryWidget": {
-				"queries" : [
-					{"name": "Phenomenon"}
-				],
-				"outFields": [
-					{"name": "Phenomenon", "alias": "Phenomenon"},
-					{"name": "alerttype", "alias": "Alert type"}
-				],
-				"maxAllowableOffset": 10
-			}
+			// "queryWidget": {
+			// 	"queries" : [
+			// 		{"name": "Phenomenon"}
+			// 	],
+			// 	"outFields": [
+			// 		{"name": "Phenomenon", "alias": "Phenomenon"},
+			// 		{"name": "alerttype", "alias": "Alert type"}
+			// 	],
+			// 	"maxAllowableOffset": 10
+			// }
 		},
 		{
 			"id": "alerts_severeWeather",
@@ -248,16 +238,16 @@ var config = {
 			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "TextForWeb"],
-			"queryWidget": {
-				"queries" : [
-					{"name": "Phenomenon"}
-				],
-				"outFields": [
-					{"name": "Phenomenon", "alias": "Phenomenon"},
-					{"name": "alerttype", "alias": "Alert type"}
-				],
-				"maxAllowableOffset": 10
-			}
+			// "queryWidget": {
+			// 	"queries" : [
+			// 		{"name": "Phenomenon"}
+			// 	],
+			// 	"outFields": [
+			// 		{"name": "Phenomenon", "alias": "Phenomenon"},
+			// 		{"name": "alerttype", "alias": "Alert type"}
+			// 	],
+			// 	"maxAllowableOffset": 10
+			// }
 		},
 		{
 			"id": "alerts_tropicalCyclone",
@@ -271,16 +261,16 @@ var config = {
 			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "TextForWeb"],
-			"queryWidget": {
-				"queries" : [
-					{"name": "Phenomenon"}
-				],
-				"outFields": [
-					{"name": "Phenomenon", "alias": "Phenomenon"},
-					{"name": "alerttype", "alias": "Alert type"}
-				],
-				"maxAllowableOffset": 10
-			}
+			// "queryWidget": {
+			// 	"queries" : [
+			// 		{"name": "Phenomenon"}
+			// 	],
+			// 	"outFields": [
+			// 		{"name": "Phenomenon", "alias": "Phenomenon"},
+			// 		{"name": "alerttype", "alias": "Alert type"}
+			// 	],
+			// 	"maxAllowableOffset": 10
+			// }
 		},
 		{
 			"id": "alerts_tsunami",
@@ -294,16 +284,16 @@ var config = {
 			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "TextForWeb"],
-			"queryWidget": {
-				"queries" : [
-					{"name": "Phenomenon"}
-				],
-				"outFields": [
-					{"name": "Phenomenon", "alias": "Phenomenon"},
-					{"name": "alerttype", "alias": "Alert type"}
-				],
-				"maxAllowableOffset": 10
-			}
+			// "queryWidget": {
+			// 	"queries" : [
+			// 		{"name": "Phenomenon"}
+			// 	],
+			// 	"outFields": [
+			// 		{"name": "Phenomenon", "alias": "Phenomenon"},
+			// 		{"name": "alerttype", "alias": "Alert type"}
+			// 	],
+			// 	"maxAllowableOffset": 10
+			// }
 		},
 
 		// Events layers
@@ -320,47 +310,19 @@ var config = {
 			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "TextForWeb"],
-			"queryWidget": {
-				"queries" : [
-					{"name": "Phenomenon"}
-				],
-				"outFields": [
-					{"name": "Phenomenon", "alias": "Phenomenon"},
-					{"name": "alerttype", "alias": "Alert type"}
-				],
-				"maxAllowableOffset": 10
-			},
-
-			"filters": [
-				{"name": "population", "alias": "Population", "type": "numeric"},
-				{"name": "area_sqkm", "alias": "Area (sq km)", "type": "numeric"}
-			]
+			// "queryWidget": {
+			// 	"queries" : [
+			// 		{"name": "Phenomenon"}
+			// 	],
+			// 	"outFields": [
+			// 		{"name": "Phenomenon", "alias": "Phenomenon"},
+			// 		{"name": "alerttype", "alias": "Alert type"}
+			// 	],
+			// 	"maxAllowableOffset": 10
+			// }
 
 		},
-		// {
-		// 	"id": "events_drought",
-		// 	"name": "Events - Drought",
-		// 	"where": "Phenomenon = 'Drought'",
-		// 	"type": "agsFeatureLayer",
-		// 	"tokenRequired": true,
-		// 	"opacity": 0.5,
-		// 	"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/Live_Events/FeatureServer/0",
-		// 	"visible": false,
-		// 	// "minZoom": 12,
-		// 	"useCors": true,
-		// 	"popup": true,
-		// 	"fields": ["objectid", "TextForWeb"],
-		// 	"queryWidget": {
-		// 		"queries" : [
-		// 			{"name": "Phenomenon"}
-		// 		],
-		// 		"outFields": [
-		// 			{"name": "Phenomenon", "alias": "Phenomenon"},
-		// 			{"name": "alerttype", "alias": "Alert type"}
-		// 		],
-		// 		"maxAllowableOffset": 10
-		// 	}
-		// },
+
 		{
 			"id": "events_earthquake",
 			"name": "Events - Earthquake",
@@ -374,16 +336,16 @@ var config = {
 			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "TextForWeb"],
-			"queryWidget": {
-				"queries" : [
-					{"name": "Phenomenon"}
-				],
-				"outFields": [
-					{"name": "Phenomenon", "alias": "Phenomenon"},
-					{"name": "alerttype", "alias": "Alert type"}
-				],
-				"maxAllowableOffset": 10
-			}
+			// "queryWidget": {
+			// 	"queries" : [
+			// 		{"name": "Phenomenon"}
+			// 	],
+			// 	"outFields": [
+			// 		{"name": "Phenomenon", "alias": "Phenomenon"},
+			// 		{"name": "alerttype", "alias": "Alert type"}
+			// 	],
+			// 	"maxAllowableOffset": 10
+			// }
 		},
 		{
 			"id": "events_flood",
@@ -398,41 +360,18 @@ var config = {
 			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "TextForWeb"],
-			"queryWidget": {
-				"queries" : [
-					{"name": "Phenomenon"}
-				],
-				"outFields": [
-					{"name": "Phenomenon", "alias": "Phenomenon"},
-					{"name": "alerttype", "alias": "Alert type"}
-				],
-				"maxAllowableOffset": 10
-			}
+			// "queryWidget": {
+			// 	"queries" : [
+			// 		{"name": "Phenomenon"}
+			// 	],
+			// 	"outFields": [
+			// 		{"name": "Phenomenon", "alias": "Phenomenon"},
+			// 		{"name": "alerttype", "alias": "Alert type"}
+			// 	],
+			// 	"maxAllowableOffset": 10
+			// }
 		},
-		// {
-		// 	"id": "events_general",
-		// 	"name": "Events - General",
-		// 	"where": "Phenomenon = 'General'",
-		// 	"type": "agsFeatureLayer",
-		// 	"tokenRequired": true,
-		// 	"opacity": 0.5,
-		// 	"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/Live_Events/FeatureServer/0",
-		// 	"visible": false,
-		// 	// "minZoom": 12,
-		// 	"useCors": true,
-		// 	"popup": true,
-		// 	"fields": ["objectid", "TextForWeb"],
-		// 	"queryWidget": {
-		// 		"queries" : [
-		// 			{"name": "Phenomenon"}
-		// 		],
-		// 		"outFields": [
-		// 			{"name": "Phenomenon", "alias": "Phenomenon"},
-		// 			{"name": "alerttype", "alias": "Alert type"}
-		// 		],
-		// 		"maxAllowableOffset": 10
-		// 	}
-		// },
+
 		{
 			"id": "events_severeThunderstorm",
 			"name": "Events - Severe thunderstorm",
@@ -446,16 +385,16 @@ var config = {
 			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "TextForWeb"],
-			"queryWidget": {
-				"queries" : [
-					{"name": "Phenomenon"}
-				],
-				"outFields": [
-					{"name": "Phenomenon", "alias": "Phenomenon"},
-					{"name": "alerttype", "alias": "Alert type"}
-				],
-				"maxAllowableOffset": 10
-			}
+			// "queryWidget": {
+			// 	"queries" : [
+			// 		{"name": "Phenomenon"}
+			// 	],
+			// 	"outFields": [
+			// 		{"name": "Phenomenon", "alias": "Phenomenon"},
+			// 		{"name": "alerttype", "alias": "Alert type"}
+			// 	],
+			// 	"maxAllowableOffset": 10
+			// }
 		},
 		{
 			"id": "events_severeWeather",
@@ -470,16 +409,16 @@ var config = {
 			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "TextForWeb"],
-			"queryWidget": {
-				"queries" : [
-					{"name": "Phenomenon"}
-				],
-				"outFields": [
-					{"name": "Phenomenon", "alias": "Phenomenon"},
-					{"name": "alerttype", "alias": "Alert type"}
-				],
-				"maxAllowableOffset": 10
-			}
+			// "queryWidget": {
+			// 	"queries" : [
+			// 		{"name": "Phenomenon"}
+			// 	],
+			// 	"outFields": [
+			// 		{"name": "Phenomenon", "alias": "Phenomenon"},
+			// 		{"name": "alerttype", "alias": "Alert type"}
+			// 	],
+			// 	"maxAllowableOffset": 10
+			// }
 		},
 		{
 			"id": "events_storm_surge",
@@ -494,41 +433,17 @@ var config = {
 			"useCors": true,
 			"popup": true,
 			"fields": ["objectid", "TextForWeb"],
-			"queryWidget": {
-				"queries" : [
-					{"name": "Phenomenon"}
-				],
-				"outFields": [
-					{"name": "Phenomenon", "alias": "Phenomenon"},
-					{"name": "alerttype", "alias": "Alert type"}
-				],
-				"maxAllowableOffset": 10
-			}
+			// "queryWidget": {
+			// 	"queries" : [
+			// 		{"name": "Phenomenon"}
+			// 	],
+			// 	"outFields": [
+			// 		{"name": "Phenomenon", "alias": "Phenomenon"},
+			// 		{"name": "alerttype", "alias": "Alert type"}
+			// 	],
+			// 	"maxAllowableOffset": 10
+			// }
 		},
-		// {
-		// 	"id": "events_tornado",
-		// 	"name": "Events - Tornado",
-		// 	"where": "Phenomenon = 'Tornado'",
-		// 	"type": "agsFeatureLayer",
-		// 	"tokenRequired": true,
-		// 	"opacity": 0.5,
-		// 	"url": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/arcgis/rest/services/Live_Events/FeatureServer/0",
-		// 	"visible": false,
-		// 	// "minZoom": 12,
-		// 	"useCors": true,
-		// 	"popup": true,
-		// 	"fields": ["objectid", "TextForWeb"],
-		// 	"queryWidget": {
-		// 		"queries" : [
-		// 			{"name": "Phenomenon"}
-		// 		],
-		// 		"outFields": [
-		// 			{"name": "Phenomenon", "alias": "Phenomenon"},
-		// 			{"name": "alerttype", "alias": "Alert type"}
-		// 		],
-		// 		"maxAllowableOffset": 10
-		// 	}
-		// },
 		{
 			"id": "events_tropicalCyclone",
 			"name": "Events - Tropical cyclone",
@@ -542,19 +457,19 @@ var config = {
 			"useCors": true,
 			"popup": false,
 			"fields": ["objectid", "TextForWeb"],
-			"queryWidget": {
-				"queries" : [
-					{"name": "name", "alias": "Cyclone name"},
-					{"name": "HazardValue", "alias": "Category", "type": "numeric"},
-					{"name": "EventDate", "alias": "Date", "type": "date"}
-				],
-				"outFields": [
-					{"name": "name", "alias": "Name"},
-					{"name": "HazardValue", "alias": "Category", "type": "numeric"},
-					{"name": "EventDate", "alias": "Date", "type": "date"}
-				],
-				"maxAllowableOffset": 10
-			},
+			// "queryWidget": {
+			// 	"queries" : [
+			// 		{"name": "name", "alias": "Cyclone name"},
+			// 		{"name": "HazardValue", "alias": "Category", "type": "numeric"},
+			// 		{"name": "EventDate", "alias": "Date", "type": "date"}
+			// 	],
+			// 	"outFields": [
+			// 		{"name": "name", "alias": "Name"},
+			// 		{"name": "HazardValue", "alias": "Category", "type": "numeric"},
+			// 		{"name": "EventDate", "alias": "Date", "type": "date"}
+			// 	],
+			// 	"maxAllowableOffset": 10
+			// },
 			"filters": [
 				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
 				{"name": "EventDate", "alias": "Date", "type": "date"}
