@@ -55,7 +55,8 @@ function afterMapLoads(){
   });
   bootleaf.bloodhoundEngine.initialize();
 
-  // Configure a custom popup which shows only the TextForWeb content as this is already nicely formatted
+  // Configure a custom popup which shows the TextForWeb content as this is already nicely formatted,
+  // with the other information separated by a table row
   bootleaf.layers.forEach(layer => {
     console.log("layer", layer)
     layer.on("click", function(evt){
@@ -65,7 +66,13 @@ function afterMapLoads(){
         // Ignore ID fields
         if (["FID", "OBJECTID", "OID", "id", "ID", "ObjectID"].indexOf(key) < 0){
           var val = evt.layer.feature.properties[key];
-          output += "<tr><td>" + val + "</td></tr>";
+          if (key === 'TextForWeb') {
+            output += "<tr><td>" + val + "</td></tr>";
+            output += "<tr></tr>";
+          } else {
+            output += "<tr><td>" + key + ": " + val + "</td></tr>";
+          }
+
         }
       }
       output += "</table>"

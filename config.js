@@ -99,7 +99,7 @@ var config = {
 			"visible": false,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "TextForWeb"],
+			"fields": ["objectid", "TextForWeb", "HazardValue", "EventQuality"],
 			// "queryWidget": {
 			// 	"queries" : [
 			// 		{"name": "Phenomenon"}
@@ -110,6 +110,10 @@ var config = {
 			// 	],
 			// 	"maxAllowableOffset": 10
 			// }
+			"filters": [
+				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
+				{"name": "EventDate", "alias": "Date", "type": "date"}
+			]
 		},
 		{
 			"id": "alerts_bushfire_watchact",
@@ -122,7 +126,7 @@ var config = {
 			"visible": false,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "TextForWeb"],
+			"fields": ["objectid", "TextForWeb", "HazardValue", "EventQuality"],
 			// "queryWidget": {
 			// 	"queries" : [
 			// 		{"name": "Phenomenon"}
@@ -133,6 +137,10 @@ var config = {
 			// 	],
 			// 	"maxAllowableOffset": 10
 			// }
+			"filters": [
+				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
+				{"name": "EventDate", "alias": "Date", "type": "date"}
+			]
 		},
 		{
 			"id": "alerts_fireWeatherWarning",
@@ -145,7 +153,7 @@ var config = {
 			"visible": false,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "TextForWeb"],
+			"fields": ["objectid", "TextForWeb", "HazardValue", "EventQuality"],
 			// "queryWidget": {
 			// 	"queries" : [
 			// 		{"name": "Phenomenon"}
@@ -156,6 +164,10 @@ var config = {
 			// 	],
 			// 	"maxAllowableOffset": 10
 			// }
+			"filters": [
+				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
+				{"name": "EventDate", "alias": "Date", "type": "date"}
+			]
 		},
 		{
 			"id": "alerts_flood",
@@ -168,7 +180,7 @@ var config = {
 			"visible": false,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "TextForWeb"],
+			"fields": ["objectid", "TextForWeb", "HazardValue", "EventQuality"],
 			// "queryWidget": {
 			// 	"queries" : [
 			// 		{"name": "Phenomenon"}
@@ -179,6 +191,10 @@ var config = {
 			// 	],
 			// 	"maxAllowableOffset": 10
 			// }
+			"filters": [
+				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
+				{"name": "EventDate", "alias": "Date", "type": "date"}
+			]
 		},
 		{
 			"id": "alerts_severe_hailstorm",
@@ -191,7 +207,7 @@ var config = {
 			"visible": false,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "TextForWeb"],
+			"fields": ["objectid", "TextForWeb", "HazardValue", "EventQuality"],
 			// "queryWidget": {
 			// 	"queries" : [
 			// 		{"name": "Phenomenon"}
@@ -202,6 +218,10 @@ var config = {
 			// 	],
 			// 	"maxAllowableOffset": 10
 			// }
+			"filters": [
+				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
+				{"name": "EventDate", "alias": "Date", "type": "date"}
+			]
 		},
 		{
 			"id": "alerts_severeThunderstorm",
@@ -214,7 +234,7 @@ var config = {
 			"visible": false,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "TextForWeb"],
+			"fields": ["objectid", "TextForWeb", "HazardValue", "EventQuality"],
 			// "queryWidget": {
 			// 	"queries" : [
 			// 		{"name": "Phenomenon"}
@@ -225,6 +245,10 @@ var config = {
 			// 	],
 			// 	"maxAllowableOffset": 10
 			// }
+			"filters": [
+				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
+				{"name": "EventDate", "alias": "Date", "type": "date"}
+			]
 		},
 		{
 			"id": "alerts_severeWeather",
@@ -237,7 +261,7 @@ var config = {
 			"visible": false,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "TextForWeb"],
+			"fields": ["objectid", "TextForWeb", "HazardValue", "EventQuality"],
 			// "queryWidget": {
 			// 	"queries" : [
 			// 		{"name": "Phenomenon"}
@@ -248,6 +272,10 @@ var config = {
 			// 	],
 			// 	"maxAllowableOffset": 10
 			// }
+			"filters": [
+				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
+				{"name": "EventDate", "alias": "Date", "type": "date"}
+			]
 		},
 		{
 			"id": "alerts_tropicalCyclone",
@@ -260,7 +288,7 @@ var config = {
 			"visible": false,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "TextForWeb"],
+			"fields": ["objectid", "TextForWeb", "HazardValue", "EventQuality"],
 			// "queryWidget": {
 			// 	"queries" : [
 			// 		{"name": "Phenomenon"}
@@ -271,6 +299,10 @@ var config = {
 			// 	],
 			// 	"maxAllowableOffset": 10
 			// }
+			"filters": [
+				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
+				{"name": "EventDate", "alias": "Date", "type": "date"}
+			]
 		},
 		{
 			"id": "alerts_tsunami",
@@ -283,7 +315,7 @@ var config = {
 			"visible": false,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "TextForWeb"],
+			"fields": ["objectid", "TextForWeb", "HazardValue", "EventQuality"],
 			// "queryWidget": {
 			// 	"queries" : [
 			// 		{"name": "Phenomenon"}
@@ -294,6 +326,10 @@ var config = {
 			// 	],
 			// 	"maxAllowableOffset": 10
 			// }
+			"filters": [
+				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
+				{"name": "EventDate", "alias": "Date", "type": "date"}
+			]
 		},
 
 		// Events layers
@@ -309,7 +345,7 @@ var config = {
 			// "minZoom": 12,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "TextForWeb"],
+			"fields": ["objectid", "TextForWeb", "HazardValue", "EventQuality"],
 			// "queryWidget": {
 			// 	"queries" : [
 			// 		{"name": "Phenomenon"}
@@ -320,7 +356,10 @@ var config = {
 			// 	],
 			// 	"maxAllowableOffset": 10
 			// }
-
+			"filters": [
+				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
+				{"name": "EventDate", "alias": "Date", "type": "date"}
+			]
 		},
 
 		{
@@ -335,7 +374,7 @@ var config = {
 			// "minZoom": 12,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "TextForWeb"],
+			"fields": ["objectid", "TextForWeb", "HazardValue", "EventQuality"],
 			// "queryWidget": {
 			// 	"queries" : [
 			// 		{"name": "Phenomenon"}
@@ -346,6 +385,10 @@ var config = {
 			// 	],
 			// 	"maxAllowableOffset": 10
 			// }
+			"filters": [
+				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
+				{"name": "EventDate", "alias": "Date", "type": "date"}
+			]
 		},
 		{
 			"id": "events_flood",
@@ -359,7 +402,7 @@ var config = {
 			// "minZoom": 12,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "TextForWeb"],
+			"fields": ["objectid", "TextForWeb", "HazardValue", "EventQuality"],
 			// "queryWidget": {
 			// 	"queries" : [
 			// 		{"name": "Phenomenon"}
@@ -370,6 +413,10 @@ var config = {
 			// 	],
 			// 	"maxAllowableOffset": 10
 			// }
+			"filters": [
+				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
+				{"name": "EventDate", "alias": "Date", "type": "date"}
+			]
 		},
 
 		{
@@ -384,7 +431,7 @@ var config = {
 			// "minZoom": 12,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "TextForWeb"],
+			"fields": ["objectid", "TextForWeb", "HazardValue", "EventQuality"],
 			// "queryWidget": {
 			// 	"queries" : [
 			// 		{"name": "Phenomenon"}
@@ -395,6 +442,10 @@ var config = {
 			// 	],
 			// 	"maxAllowableOffset": 10
 			// }
+			"filters": [
+				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
+				{"name": "EventDate", "alias": "Date", "type": "date"}
+			]
 		},
 		{
 			"id": "events_severeWeather",
@@ -408,7 +459,7 @@ var config = {
 			// "minZoom": 12,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "TextForWeb"],
+			"fields": ["objectid", "TextForWeb", "HazardValue", "EventQuality"],
 			// "queryWidget": {
 			// 	"queries" : [
 			// 		{"name": "Phenomenon"}
@@ -419,6 +470,10 @@ var config = {
 			// 	],
 			// 	"maxAllowableOffset": 10
 			// }
+			"filters": [
+				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
+				{"name": "EventDate", "alias": "Date", "type": "date"}
+			]
 		},
 		{
 			"id": "events_storm_surge",
@@ -432,7 +487,7 @@ var config = {
 			// "minZoom": 12,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "TextForWeb"],
+			"fields": ["objectid", "TextForWeb", "HazardValue", "EventQuality"],
 			// "queryWidget": {
 			// 	"queries" : [
 			// 		{"name": "Phenomenon"}
@@ -443,6 +498,10 @@ var config = {
 			// 	],
 			// 	"maxAllowableOffset": 10
 			// }
+			"filters": [
+				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
+				{"name": "EventDate", "alias": "Date", "type": "date"}
+			]
 		},
 		{
 			"id": "events_tropicalCyclone",
@@ -456,7 +515,7 @@ var config = {
 			// "minZoom": 12,
 			"useCors": true,
 			"popup": false,
-			"fields": ["objectid", "TextForWeb"],
+			"fields": ["objectid", "TextForWeb", "HazardValue", "EventQuality"],
 			// "queryWidget": {
 			// 	"queries" : [
 			// 		{"name": "name", "alias": "Cyclone name"},
