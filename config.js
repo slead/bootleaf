@@ -61,14 +61,16 @@ var config = {
 			"layers" : [
 				"events_bushfire", "events_drought", "events_earthquake", "events_flood", "events_general", "events_severeThunderstorm", "events_severeWeather",
 				"events_storm_surge", "events_tropicalCyclone"
-			]
+			],
+			"exclusive": true
 		},
 		{
 			"name": "Alerts",
 			"layers" : [
 				"alerts_bushfire_emergency", "alerts_bushfire_watchact", "alerts_fireWeatherWarning", "alerts_flood", "alerts_severe_hailstorm", "alerts_severeThunderstorm", "alerts_severeWeather",
 				"alerts_tropicalCyclone","alerts_tsunami"
-			]
+			],
+			"exclusive": true
 		}
 	],
 	"projections": [
@@ -97,7 +99,7 @@ var config = {
 			"visible": false,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "Phenomenon", "TextForWeb", "EventName", "EventCategory","EventQuality","EventDate","HazardValue","HazardDescription"],
+			"fields": ["objectid", "TextForWeb"],
 			"queryWidget": {
 				"queries" : [
 					{"name": "Phenomenon"}
@@ -125,7 +127,7 @@ var config = {
 			"visible": false,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "Phenomenon", "TextForWeb", "EventName", "EventCategory","EventQuality","EventDate","HazardValue","HazardDescription"],
+			"fields": ["objectid", "TextForWeb"],
 			"queryWidget": {
 				"queries" : [
 					{"name": "Phenomenon"}
@@ -153,7 +155,7 @@ var config = {
 			"visible": false,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "Phenomenon", "TextForWeb", "EventName", "EventCategory","EventQuality","EventDate","HazardValue","HazardDescription"],
+			"fields": ["objectid", "TextForWeb"],
 			"queryWidget": {
 				"queries" : [
 					{"name": "Phenomenon"}
@@ -176,7 +178,7 @@ var config = {
 			"visible": false,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "Phenomenon", "TextForWeb", "EventName", "EventCategory","EventQuality","EventDate","HazardValue","HazardDescription"],
+			"fields": ["objectid", "TextForWeb"],
 			"queryWidget": {
 				"queries" : [
 					{"name": "Phenomenon"}
@@ -199,7 +201,7 @@ var config = {
 			"visible": false,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "Phenomenon", "TextForWeb", "EventName", "EventCategory","EventQuality","EventDate","HazardValue","HazardDescription"],
+			"fields": ["objectid", "TextForWeb"],
 			"queryWidget": {
 				"queries" : [
 					{"name": "Phenomenon"}
@@ -222,7 +224,7 @@ var config = {
 			"visible": false,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "Phenomenon", "TextForWeb", "EventName", "EventCategory","EventQuality","EventDate","HazardValue","HazardDescription"],
+			"fields": ["objectid", "TextForWeb"],
 			"queryWidget": {
 				"queries" : [
 					{"name": "Phenomenon"}
@@ -245,7 +247,7 @@ var config = {
 			"visible": false,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "Phenomenon", "TextForWeb", "EventName", "EventCategory","EventQuality","EventDate","HazardValue","HazardDescription"],
+			"fields": ["objectid", "TextForWeb"],
 			"queryWidget": {
 				"queries" : [
 					{"name": "Phenomenon"}
@@ -268,7 +270,7 @@ var config = {
 			"visible": false,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "Phenomenon", "TextForWeb", "EventName", "EventCategory","EventQuality","EventDate","HazardValue","HazardDescription"],
+			"fields": ["objectid", "TextForWeb"],
 			"queryWidget": {
 				"queries" : [
 					{"name": "Phenomenon"}
@@ -291,7 +293,7 @@ var config = {
 			"visible": false,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "Phenomenon", "TextForWeb", "EventName", "EventCategory","EventQuality","EventDate","HazardValue","HazardDescription"],
+			"fields": ["objectid", "TextForWeb"],
 			"queryWidget": {
 				"queries" : [
 					{"name": "Phenomenon"}
@@ -317,7 +319,7 @@ var config = {
 			// "minZoom": 12,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "Phenomenon", "TextForWeb", "EventName", "EventCategory","EventQuality","EventDate","HazardValue","HazardDescription"],
+			"fields": ["objectid", "TextForWeb"],
 			"queryWidget": {
 				"queries" : [
 					{"name": "Phenomenon"}
@@ -347,7 +349,7 @@ var config = {
 		// 	// "minZoom": 12,
 		// 	"useCors": true,
 		// 	"popup": true,
-		// 	"fields": ["objectid", "Phenomenon", "TextForWeb", "EventName", "EventCategory","EventQuality","EventDate","HazardValue","HazardDescription"],
+		// 	"fields": ["objectid", "TextForWeb"],
 		// 	"queryWidget": {
 		// 		"queries" : [
 		// 			{"name": "Phenomenon"}
@@ -371,7 +373,7 @@ var config = {
 			// "minZoom": 12,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "Phenomenon", "TextForWeb", "EventName", "EventCategory","EventQuality","EventDate","HazardValue","HazardDescription"],
+			"fields": ["objectid", "TextForWeb"],
 			"queryWidget": {
 				"queries" : [
 					{"name": "Phenomenon"}
@@ -395,7 +397,7 @@ var config = {
 			// "minZoom": 12,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "Phenomenon", "TextForWeb", "EventName", "EventCategory","EventQuality","EventDate","HazardValue","HazardDescription"],
+			"fields": ["objectid", "TextForWeb"],
 			"queryWidget": {
 				"queries" : [
 					{"name": "Phenomenon"}
@@ -419,7 +421,7 @@ var config = {
 		// 	// "minZoom": 12,
 		// 	"useCors": true,
 		// 	"popup": true,
-		// 	"fields": ["objectid", "Phenomenon", "TextForWeb", "EventName", "EventCategory","EventQuality","EventDate","HazardValue","HazardDescription"],
+		// 	"fields": ["objectid", "TextForWeb"],
 		// 	"queryWidget": {
 		// 		"queries" : [
 		// 			{"name": "Phenomenon"}
@@ -443,7 +445,7 @@ var config = {
 			// "minZoom": 12,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "Phenomenon", "TextForWeb", "EventName", "EventCategory","EventQuality","EventDate","HazardValue","HazardDescription"],
+			"fields": ["objectid", "TextForWeb"],
 			"queryWidget": {
 				"queries" : [
 					{"name": "Phenomenon"}
@@ -467,7 +469,7 @@ var config = {
 			// "minZoom": 12,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "Phenomenon", "TextForWeb", "EventName", "EventCategory","EventQuality","EventDate","HazardValue","HazardDescription"],
+			"fields": ["objectid", "TextForWeb"],
 			"queryWidget": {
 				"queries" : [
 					{"name": "Phenomenon"}
@@ -491,7 +493,7 @@ var config = {
 			// "minZoom": 12,
 			"useCors": true,
 			"popup": true,
-			"fields": ["objectid", "Phenomenon", "TextForWeb", "EventName", "EventCategory","EventQuality","EventDate","HazardValue","HazardDescription"],
+			"fields": ["objectid", "TextForWeb"],
 			"queryWidget": {
 				"queries" : [
 					{"name": "Phenomenon"}
@@ -515,7 +517,7 @@ var config = {
 		// 	// "minZoom": 12,
 		// 	"useCors": true,
 		// 	"popup": true,
-		// 	"fields": ["objectid", "Phenomenon", "TextForWeb", "EventName", "EventCategory","EventQuality","EventDate","HazardValue","HazardDescription"],
+		// 	"fields": ["objectid", "TextForWeb"],
 		// 	"queryWidget": {
 		// 		"queries" : [
 		// 			{"name": "Phenomenon"}
@@ -538,8 +540,8 @@ var config = {
 			"visible": false,
 			// "minZoom": 12,
 			"useCors": true,
-			"popup": true,
-			"fields": ["objectid", "Phenomenon", "TextForWeb", "EventName", "EventCategory","EventQuality","EventDate","HazardValue","HazardDescription"],
+			"popup": false,
+			"fields": ["objectid", "TextForWeb"],
 			"queryWidget": {
 				"queries" : [
 					{"name": "name", "alias": "Cyclone name"},

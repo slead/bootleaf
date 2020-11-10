@@ -55,6 +55,24 @@ function afterMapLoads(){
   });
   bootleaf.bloodhoundEngine.initialize();
 
+  // Configure a custom popup which shows only the TextForWeb content as this is already nicely formatted
+  bootleaf.layers.forEach(layer => {
+    console.log("layer", layer)
+    layer.on("click", function(evt){
+      var output = '<table>';
+      var layerConfig = this.layerConfig;
+      for (key in evt.layer.feature.properties){
+        // Ignore ID fields
+        if (["FID", "OBJECTID", "OID", "id", "ID", "ObjectID"].indexOf(key) < 0){
+          var val = evt.layer.feature.properties[key];
+          output += "<tr><td>" + val + "</td></tr>";
+        }
+      }
+      output += "</table>"
+      bootleaf.map.openPopup(output, evt.latlng)
+    });
+  });
+
 }
 
 function configureClimateRiskAnalysis() {
