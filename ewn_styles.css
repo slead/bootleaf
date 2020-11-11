@@ -1,0 +1,45 @@
+.legend {
+  padding: 0px 10px 0px 5px;
+  margin-right: 5px;
+}
+
+.tropical_cyclone {
+  background-color: #047510;
+}
+
+.storm_surge {
+  background-color: #1601fa;
+}
+
+.severe_weather {
+  background-color: #feb9c5;
+}
+
+.severe_thunderstorm {
+  background-color: #fe191d;
+}
+
+.flood {
+  background-color: #1601fa;
+}
+
+.other {
+  background-color: #feff2e;
+}
+
+.bushfire_advice {
+  background-color: #9a2829;
+}
+
+.tsunami {
+  background-color: #70b9fc;
+}
+
+
+.fire_weather_warning {
+  background-color: #fe7f22;
+}
+
+.bushfire_watch_act {
+  background-color: #750173;
+}
