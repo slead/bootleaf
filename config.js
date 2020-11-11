@@ -62,7 +62,7 @@ var config = {
 				"events_bushfire", "events_drought", "events_earthquake", "events_flood", "events_general", "events_severeThunderstorm", "events_severeWeather",
 				"events_storm_surge", "events_tropicalCyclone"
 			],
-			"exclusive": true
+			"exclusive": false
 		},
 		{
 			"name": "Alerts",
@@ -70,7 +70,7 @@ var config = {
 				"alerts_bushfire_emergency", "alerts_bushfire_watchact", "alerts_fireWeatherWarning", "alerts_flood", "alerts_severe_hailstorm", "alerts_severeThunderstorm", "alerts_severeWeather",
 				"alerts_tropicalCyclone","alerts_tsunami"
 			],
-			"exclusive": true
+			"exclusive": false
 		}
 	],
 	"projections": [
@@ -113,7 +113,10 @@ var config = {
 			"filters": [
 				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
 				{"name": "EventDate", "alias": "Date", "type": "date"}
-			]
+			],
+			"style": {
+			    "color": "#9a2829"
+			}
 		},
 		{
 			"id": "alerts_bushfire_watchact",
@@ -140,7 +143,10 @@ var config = {
 			"filters": [
 				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
 				{"name": "EventDate", "alias": "Date", "type": "date"}
-			]
+			],
+			"style": {
+			    "color": "#750173"
+			}
 		},
 		{
 			"id": "alerts_fireWeatherWarning",
@@ -167,7 +173,10 @@ var config = {
 			"filters": [
 				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
 				{"name": "EventDate", "alias": "Date", "type": "date"}
-			]
+			],
+			"style": {
+			    "color": "#fe7f22"
+			}
 		},
 		{
 			"id": "alerts_flood",
@@ -194,7 +203,10 @@ var config = {
 			"filters": [
 				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
 				{"name": "EventDate", "alias": "Date", "type": "date"}
-			]
+			],
+			"style": {
+			    "color": "#1601fa"
+			}
 		},
 		{
 			"id": "alerts_severe_hailstorm",
@@ -221,7 +233,10 @@ var config = {
 			"filters": [
 				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
 				{"name": "EventDate", "alias": "Date", "type": "date"}
-			]
+			],
+			"style": {
+			    "color": "#feb9c5"
+			}
 		},
 		{
 			"id": "alerts_severeThunderstorm",
@@ -248,7 +263,10 @@ var config = {
 			"filters": [
 				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
 				{"name": "EventDate", "alias": "Date", "type": "date"}
-			]
+			],
+			"style": {
+			    "color": "#fe191d"
+			}
 		},
 		{
 			"id": "alerts_severeWeather",
@@ -275,7 +293,10 @@ var config = {
 			"filters": [
 				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
 				{"name": "EventDate", "alias": "Date", "type": "date"}
-			]
+			],
+			"style": {
+			    "color": "#feb9c5"
+			}
 		},
 		{
 			"id": "alerts_tropicalCyclone",
@@ -302,7 +323,10 @@ var config = {
 			"filters": [
 				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
 				{"name": "EventDate", "alias": "Date", "type": "date"}
-			]
+			],
+			"style": {
+			    "color": "#047510"
+			}
 		},
 		{
 			"id": "alerts_tsunami",
@@ -329,7 +353,10 @@ var config = {
 			"filters": [
 				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
 				{"name": "EventDate", "alias": "Date", "type": "date"}
-			]
+			],
+			"style": {
+			    "color": "#70b9fc"
+			}
 		},
 
 		// Events layers
@@ -359,7 +386,10 @@ var config = {
 			"filters": [
 				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
 				{"name": "EventDate", "alias": "Date", "type": "date"}
-			]
+			],
+			"style": {
+			    "color": "#9a2829"
+			}
 		},
 
 		{
@@ -388,7 +418,10 @@ var config = {
 			"filters": [
 				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
 				{"name": "EventDate", "alias": "Date", "type": "date"}
-			]
+			],
+			"style": {
+			    "color": "#feff2e"
+			}
 		},
 		{
 			"id": "events_flood",
@@ -416,7 +449,10 @@ var config = {
 			"filters": [
 				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
 				{"name": "EventDate", "alias": "Date", "type": "date"}
-			]
+			],
+			"style": {
+			    "color": "#1601fa"
+			}
 		},
 
 		{
@@ -445,7 +481,10 @@ var config = {
 			"filters": [
 				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
 				{"name": "EventDate", "alias": "Date", "type": "date"}
-			]
+			],
+			"style": {
+			    "color": "#fe191d"
+			}
 		},
 		{
 			"id": "events_severeWeather",
@@ -473,7 +512,10 @@ var config = {
 			"filters": [
 				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
 				{"name": "EventDate", "alias": "Date", "type": "date"}
-			]
+			],
+			"style": {
+			    "color": "#feb9c5"
+			}
 		},
 		{
 			"id": "events_storm_surge",
@@ -501,7 +543,10 @@ var config = {
 			"filters": [
 				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
 				{"name": "EventDate", "alias": "Date", "type": "date"}
-			]
+			],
+			"style": {
+			    "color": "#1601fa"
+			}
 		},
 		{
 			"id": "events_tropicalCyclone",
@@ -532,7 +577,10 @@ var config = {
 			"filters": [
 				{"name": "HazardValue", "alias": "Category", "type": "numeric"},
 				{"name": "EventDate", "alias": "Date", "type": "date"}
-			]
+			],
+			"style": {
+			    "color": "#047510"
+			}
 		}
 	]
 }
