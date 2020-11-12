@@ -223,7 +223,7 @@ function runClimateAnalysis(){
       url: url,
       type: 'GET'
     }).done(function(response) {
-      if (response['output'] !== undefined){
+      if (response['output'] !== undefined && response.errorText === ''){
         var probabilities = response['output'];
 
         if (probabilities !== undefined){
