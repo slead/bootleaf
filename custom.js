@@ -175,7 +175,7 @@ function runClimateAnalysis(){
 
   try{
 	  var hazard = $("#cboHazard").val();
-	  if (hazard === ""){
+	  if (hazard.length === 0){
 	    $("#errorText").text("Please choose the hazard type");
 	    resetSubmitButton();
 	    return;
@@ -210,8 +210,14 @@ function runClimateAnalysis(){
 	    return;
 	  }
 
+    var test = $("#cboTest").val();
+    if (test === ""){
+      $("#errorText").text("Please choose the test");
+      resetSubmitButton();
+      return;
+    }
 
-    var url = config.pythonUrl + "?test=poi&hazard=" + hazard + "&time=" + timePeriod + "&mode=" + mode;
+    var url = config.pythonUrl + "?test=" + test + "&hazard=" + hazard + "&time=" + timePeriod + "&mode=" + mode;
 
     if (mode === 'l') {
     	url += "&name=" + lga;
@@ -224,30 +230,40 @@ function runClimateAnalysis(){
       type: 'GET'
     }).done(function(response) {
       if (response['output'] !== undefined && response.errorText === ''){
-        var probabilities = response['output'];
+        var test = $("#cboTest").val();
+        var output = response['output'];
+        var climateResults;
 
-        if (probabilities !== undefined){
+        if (output === undefined){
+          $("#errorText").text('There was a problem');
+          return;
+        };
+
+        if (test === 'poi') {
           var results = {
-            prob100: probabilities[100],
+            prob100: output[100],
             numYears: $("#cboTime").val()
           }
-          var climateResults = $("#climate-results").html();
+          climateResults = $("#climate-results-poi").html();
           resultsTemplate = Handlebars.compile(climateResults);
           var html = resultsTemplate(results);
           $("#results").html(html);
 
-          var probabilities = probabilities;
           $("#tblProbabilities > thead").append("<th>Num. of Events</th><th>Probability</th>");
-          for (var year in probabilities) {
-            var value = probabilities[year];
+          for (var year in output) {
+            var value = output[year];
             $("#tblProbabilities > tbody").append("<tr><td>" + year + "</td><td>" + value + "</td></tr>");
           }
 
           $("#btnShowAllResults").on("click", function(){
             $("#tblProbabilities").toggle();
           });
+        } else if (test === 'list') {
+
+        } else if (test === 'alert') {
+
         } else {
-          $("#errorText").text('There was a problem calculating the Poisson results');
+          $("#errorText").text('There was a problem');
         }
 
         // Add the Poisson component to the table
