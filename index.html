@@ -269,7 +269,17 @@
       <div >
         <div class="row">
           <div class="col-md-12 mb-3">
-            <label for="cboHazard">Select Hazard</label>
+            <label for="cboTest">Choose the Climate Risk test type</label>
+            <select class="climateInput custom-select d-block w-100" id="cboTest" required>
+              <option value="">Choose...</option>
+              <option value="poi">Poisson</option>
+              <option value="list">List</option>
+              <option value="alert">Alert</option>
+            </select>
+          </div>
+
+          <div class="col-md-12 mb-3 craControls poiControls">
+            <label for="cboHazard">Select Hazard(s)</label>
             <select class="climateInput custom-select d-block w-100" id="cboHazard" required multiple>
               <option value="">Choose...</option>
               <option value="bushfire1">Bushfire 1</option>
@@ -312,7 +322,7 @@
             </select>
           </div>
 
-          <div class="col-md-12 mb-3">
+          <div class="col-md-12 mb-3 craControls poiControls listControls">
             <label for="cboMode">Mode</label>
             <select class="climateInput custom-select d-block w-100" id="cboMode" required>
               <option value="">Choose...</option>
@@ -321,16 +331,16 @@
             </select>
           </div>
 
-          <div class="col-md-12 mb-3 climateLgaControls">
+          <div class="col-md-12 mb-3 climateLgaControls craControls" >
             <input type="text" id="txtLGA" class="climateInput" required placeholder="Choose the LGA"/>
           </div>
 
-          <div class="col-md-12 mb-3 climateDrawControls">
+          <div class="col-md-12 mb-3 climateDrawControls craControls">
             <span id="climateDrawControl"></span>
             <span id="climateDrawControlHelp" class="info"> &nbsp; &nbsp; &larr; Activate the tool then draw a rectangle on the map</span>
           </div>
 
-          <div class="col-md-12 mb-3">
+          <div class="col-md-12 mb-3 craControls poiControls">
             <label for="cboTime">Time Period</label>
             <select class="climateInput custom-select d-block w-100" id="cboTime" required>
               <option value="">Choose...</option>
@@ -340,16 +350,6 @@
               <option value="10">10 years</option>
               <option value="15">15 years</option>
               <option value="20">20 years</option>
-            </select>
-          </div>
-
-          <div class="col-md-12 mb-3">
-            <label for="cboTest">Test</label>
-            <select class="climateInput custom-select d-block w-100" id="cboTest" required>
-              <option value="">Choose...</option>
-              <option value="poi">Poisson</option>
-              <option value="list">List</option>
-              <option value="alert">Alert</option>
             </select>
           </div>
 

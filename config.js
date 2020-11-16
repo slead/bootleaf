@@ -7,6 +7,7 @@ var config = {
 
 	"requireArcGISLogin": true, // Does the user need to log in to ArcGIS Online or ArcGIS Server?
 	"tokenUrl": 'https://www.arcgis.com/sharing/generateToken', // ArcGIS token generation URL
+	"baseURL": "https://services3.arcgis.com/DAOFSCQzZUm0ZtWu/ArcGIS/rest/services?f=pjson", //
 
 	"title": "EWN Climate Risk Analyser",
 	"start": {

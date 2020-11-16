@@ -78,7 +78,7 @@ div.dataTables_wrapper div.dataTables_paginate {
   display: none;
 }
 
-.climateLgaControls, .climateDrawControls {
+.climateLgaControls, .climateDrawControls, .craControls {
   display: none;
 }
 

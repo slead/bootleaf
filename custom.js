@@ -58,7 +58,6 @@ function afterMapLoads(){
   // Configure a custom popup which shows the TextForWeb content as this is already nicely formatted,
   // with the other information separated by a table row
   bootleaf.layers.forEach(layer => {
-    console.log("layer", layer)
     layer.on("click", function(evt){
       var output = '<table>';
       var layerConfig = this.layerConfig;
@@ -79,6 +78,27 @@ function afterMapLoads(){
       bootleaf.map.openPopup(output, evt.latlng)
     });
   });
+
+  // Check for any valid "Client_" layers which this ArcGIS Online
+  // user has access to
+  let url = config.baseURL + "&token=" + config.token;
+  $.ajax({
+    url: url,
+    type: 'GET',
+    dataType: "json"
+  }).done(function(response) {
+
+    for (var i = 0; i < response.services.length; i++){
+      var service = response.services[i];
+      if (service.name.toUpperCase().includes("CLIENT_")) {
+        console.log("found layer", service.name, "at", service.url)
+      }
+    }
+  }).catch(function(error) {
+    console.error("There was a problem fetching the client layers")
+  });
+
+
 
 }
 
@@ -167,6 +187,19 @@ function configureClimateRiskAnalysis() {
     runClimateAnalysis();
   });
 
+  $("#cboTest").on("change", function(evt){
+    var test = evt.target.value;
+    if (test === 'poi') {
+      $(".poiControls").show();
+    } else {
+      $(".poiControls").hide();
+      $(".listControls").show();
+    }
+    console.log("change method", evt.target.value)
+  });
+
+
+
 }
 
 function runClimateAnalysis(){
@@ -174,12 +207,25 @@ function runClimateAnalysis(){
   resetSubmitButton("enable");
 
   try{
+
+    var test = $("#cboTest").val();
+    if (test === ""){
+      $("#errorText").text("Please choose the test");
+      resetSubmitButton();
+      return;
+    }
+
 	  var hazard = $("#cboHazard").val();
-	  if (hazard.length === 0){
-	    $("#errorText").text("Please choose the hazard type");
-	    resetSubmitButton();
-	    return;
-	  }
+	  if (test === 'poi') {
+      if (hazard.length === 0){
+  	    $("#errorText").text("Please choose the hazard type");
+  	    resetSubmitButton();
+  	    return;
+      }
+	  } else {
+      // use a dummy value for List or Alert test
+      hazard = "null";
+    }
 
 	  var mode = $("#cboMode").val();
 	  if (mode === ""){
@@ -204,17 +250,15 @@ function runClimateAnalysis(){
 		}
 
 	  var timePeriod = $("#cboTime").val();
-	  if (timePeriod === ""){
-	    $("#errorText").text("Please choose the time period");
-	    resetSubmitButton();
-	    return;
-	  }
-
-    var test = $("#cboTest").val();
-    if (test === ""){
-      $("#errorText").text("Please choose the test");
-      resetSubmitButton();
-      return;
+	  if (test === 'poi'){
+      if (timePeriod === ""){
+        $("#errorText").text("Please choose the time period");
+        resetSubmitButton();
+        return;
+      }
+	  } else {
+      // use a dummy value for List or Alert test
+      timePeriod = "null";
     }
 
     var url = config.pythonUrl + "?test=" + test + "&hazard=" + hazard + "&time=" + timePeriod + "&mode=" + mode;
