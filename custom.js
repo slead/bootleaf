@@ -191,6 +191,9 @@ function configureClimateRiskAnalysis() {
     var test = evt.target.value;
     if (test === 'poi') {
       $(".poiControls").show();
+    } else if (test === "alert"){
+      $(".poiControls").hide();
+      $(".alertControls").show();
     } else {
       $(".poiControls").hide();
       $(".listControls").show();
@@ -216,7 +219,7 @@ function runClimateAnalysis(){
     }
 
 	  var hazard = $("#cboHazard").val();
-	  if (test === 'poi') {
+	  if (test === 'poi' || test === 'alert') {
       if (hazard.length === 0){
   	    $("#errorText").text("Please choose the hazard type");
   	    resetSubmitButton();
