@@ -319,6 +319,16 @@ function runClimateAnalysis(){
         } else if (test === 'list') {
           climateResults = $("#climate-results-list").html();
           resultsTemplate = Handlebars.compile(climateResults);
+
+          // Convert the output codes to text-friendly values
+          for (var key in output) {
+            var prefix = key.substr(0, key.indexOf("_"));
+            var origValue = key.substr(key.indexOf("_") + 1, key.length);
+            var alias = hazardLookup.find(o => o.value === origValue).alias;
+            var value = output[key];
+            console.log(prefix, "years ", alias, ": ", value)
+          }
+
           var html = resultsTemplate(output);
           $("#results").html(html);
 
