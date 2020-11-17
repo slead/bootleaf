@@ -1,7 +1,7 @@
 var hazardLookup = [
-       {value:"bushfire1", alias:"Bushfire 1 (Emergency)"},
-       {value:"bushfire2", alias:"Bushfire 2 (Emergency - homes lost)"},
-       {value:"bushfire3", alias:"Bushfire 3 ((Emergency - homes & lives lost)"},
+       {value:"bushfire1", alias:"Bushfire (Emergency)"},
+       {value:"bushfire2", alias:"Bushfire (Emergency - homes lost)"},
+       {value:"bushfire3", alias:"Bushfire (Emergency - homes & lives lost)"},
        {value:"cyclone1", alias:"Cyclone (Category 1)"},
        {value:"cyclone2", alias:"Cyclone (Category 2)"},
        {value:"cyclone3", alias:"Cyclone (Category 3)"},

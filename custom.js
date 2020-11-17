@@ -348,7 +348,8 @@ function runClimateAnalysis(){
         } else if (test === 'alert') {
           climateResults = $("#climate-results-alert").html();
           resultsTemplate = Handlebars.compile(climateResults);
-          output.hazard = $("#cboHazard").val();
+          var hazard = $("#cboHazard").val();
+          output.hazard = hazardLookup.find(o => o.value === hazard).alias;
           var html = resultsTemplate(output);
           $("#results").html(html);
 
