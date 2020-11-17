@@ -140,6 +140,13 @@ function configureClimateRiskAnalysis() {
       }
     });
 
+    // Load the hazards from the config file
+    var hazards = [];
+    $.each(hazardLookup, function(key, hazard){
+      hazards.push('<option value="'+ hazard.value +'">'+ hazard.alias +'</option>');}
+    );
+    $('#cboHazard').html(hazards.join(''));
+
 	  // Toggle the LGA control depending on the value of Mode
 	  $("#cboMode").on('change', function(evt){
 	  	// clear any existing bounding boxes

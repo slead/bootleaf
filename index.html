@@ -281,44 +281,7 @@
           <div class="col-md-12 mb-3 craControls poiControls alertControls">
             <label id="lblHazard" for="cboHazard">Select Hazard</label>
             <select class="climateInput custom-select d-block w-100" id="cboHazard" required>
-              <option value="">Choose...</option>
-              <option value="bushfire1">Bushfire 1 (Emergency)</option>
-              <option value="bushfire2">Bushfire 2 (Emergency - homes lost)</option>
-              <option value="bushfire3">Bushfire 3 ((Emergency - homes & lives lost)</option>
-              <option value="cyclone1">Cyclone (Category 1)</option>
-              <option value="cyclone2">Cyclone (Category 2)</option>
-              <option value="cyclone3">Cyclone (Category 3)</option>
-              <option value="cyclone4">Cyclone (Category 4)</option>
-              <option value="cyclone5">Cyclone (Category 5)</option>
-              <option value="cyclone">Cyclone (all)</option>
-              <option value="drought">Drought</option>
-              <option value="earthquake2">Earthquake (2.0 MMI)</option>
-              <option value="earthquake3">Earthquake (3.0 MMI)</option>
-              <option value="earthquake4">Earthquake (4.0 MMI)</option>
-              <option value="earthquake5">Earthquake (5.0 MMI)</option>
-              <option value="earthquake6">Earthquake (6.0 MMI)</option>
-              <option value="earthquake7">Earthquake (7.0 MMI)</option>
-              <option value="flooding2">Flooding (Moderate)</option>
-              <option value="flooding3">Flooding (Major)</option>
-              <option value="hail0">Hail (0-3 cm)</option>
-              <option value="hail1">Hail (3-5 cm)</option>
-              <option value="hail2">Hail (6-8 cm)</option>
-              <option value="hail3">Hail (9cm and above)</option>
-              <option value="rain">Rain</option>
-              <option value="severewinds1">Severe Winds (90-120kph)</option>
-              <option value="severewinds2">Severe Winds (120kph+)</option>
-              <option value="stormsurge0">Storm Surge (0-1m)</option>
-              <option value="stormsurge1">Storm Surge (1-2m)</option>
-              <option value="stormsurge2">Storm Surge (2-3m)</option>
-              <option value="stormsurge3">Storm Surge (3-4m)</option>
-              <option value="stormsurge4">Storm Surge (4-6m)</option>
-              <option value="tornado0">Tornado (F0)</option>
-              <option value="tornado1">Tornado (F1)</option>
-              <option value="tornado2">Tornado (F2)</option>
-              <option value="tornado3">Tornado (F3)</option>
-              <option value="tornado4">Tornado (F4)</option>
-              <option value="windgusts1">Wind Gusts (90-120kph)</option>
-              <option value="windgusts2">Wind Gusts (120kph+)</option>
+
             </select>
           </div>
 
@@ -487,6 +450,9 @@
 
 <!-- the configuration file holding this app's customisations -->
 <script src="config.js"></script>
+
+<!-- hazard lookup values -->
+<script src="hazardLookup.js"></script>
 
 <!-- climate risk analysis functionality -->
 <script src="./src/plugins/typeahead.js/typeahead.bundle.js"></script>
