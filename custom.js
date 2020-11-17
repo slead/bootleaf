@@ -321,19 +321,27 @@ function runClimateAnalysis(){
           resultsTemplate = Handlebars.compile(climateResults);
 
           // Convert the output codes to text-friendly values
+          var listResults = {}
           for (var key in output) {
             var prefix = key.substr(0, key.indexOf("_"));
             var origValue = key.substr(key.indexOf("_") + 1, key.length);
             var alias = hazardLookup.find(o => o.value === origValue).alias;
             var value = output[key];
-            console.log(prefix, "years ", alias, ": ", value)
+            var str;
+            if (prefix === '1') {
+              str = prefix + " year: " + alias;
+            } else {
+              str = prefix + " years: " + alias;
+            }
+
+            listResults[str] = value;
           }
 
           var html = resultsTemplate(output);
           $("#results").html(html);
 
           $("#tblList > thead").append("<th>Hazard</th><th>Probability</th>");
-          for (const [key, value] of Object.entries(output)) {
+          for (const [key, value] of Object.entries(listResults)) {
             $("#tblList > tbody").append("<tr><td>" + key + "</td><td>" + value + "</td></tr>");
           }
 
