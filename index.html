@@ -279,8 +279,8 @@
           </div>
 
           <div class="col-md-12 mb-3 craControls poiControls alertControls">
-            <label for="cboHazard">Select Hazard(s)</label>
-            <select class="climateInput custom-select d-block w-100" id="cboHazard" required multiple>
+            <label id="lblHazard" for="cboHazard">Select Hazard</label>
+            <select class="climateInput custom-select d-block w-100" id="cboHazard" required>
               <option value="">Choose...</option>
               <option value="bushfire1">Bushfire 1</option>
               <option value="bushfire2">Bushfire 2</option>
@@ -384,9 +384,7 @@
 
 <script id="climate-results-list" type="text/x-handlebars-template">
   <h4>Results</h4>
-  <p>Probability of event occurring within {{numYears}} years is {{prob100}}</p>
-  <button id="btnShowAllResults" class="btn btn-secondary">View complete list</button>
-  <table id="tblProbabilities" class="table table-striped table-sm mt-4" style="display:none;">
+  <table id="tblList" class="table table-striped table-sm mt-4">
     <thead></thead>
     <tbody></tbody>
   </table>
@@ -394,12 +392,7 @@
 
 <script id="climate-results-alert" type="text/x-handlebars-template">
   <h4>Results</h4>
-  <p>Probability of event occurring within {{numYears}} years is {{prob100}}</p>
-  <button id="btnShowAllResults" class="btn btn-secondary">View complete list</button>
-  <table id="tblProbabilities" class="table table-striped table-sm mt-4" style="display:none;">
-    <thead></thead>
-    <tbody></tbody>
-  </table>
+  <p>There have been {{total_hazards}} alerts issued since {{first_alert}} in the selected area for {{hazard}}, averaging {{per_year}} alerts per year to date. The largest number of alerts issued in one month was {{highest_month}} and {{month1}} is the riskiest month</p
 </script>
 
     <!-- <div class="row mt-3">

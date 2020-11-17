@@ -191,8 +191,12 @@ function configureClimateRiskAnalysis() {
     var test = evt.target.value;
     if (test === 'poi') {
       $(".poiControls").show();
+      $("#cboHazard").prop("multiple", true);
+      $("#lblHazard").text("Select Hazard(s)");
     } else if (test === "alert"){
       $(".poiControls").hide();
+      $("#cboHazard").prop("multiple", false);
+      $("#lblHazard").text("Select Hazard")
       $(".alertControls").show();
     } else {
       $(".poiControls").hide();
@@ -306,11 +310,26 @@ function runClimateAnalysis(){
             $("#tblProbabilities").toggle();
           });
         } else if (test === 'list') {
+          climateResults = $("#climate-results-list").html();
+          resultsTemplate = Handlebars.compile(climateResults);
+          var html = resultsTemplate(output);
+          $("#results").html(html);
+
+          $("#tblList > thead").append("<th>Hazard</th><th>Probability</th>");
+          for (const [key, value] of Object.entries(output)) {
+            $("#tblList > tbody").append("<tr><td>" + key + "</td><td>" + value + "</td></tr>");
+          }
 
         } else if (test === 'alert') {
+          climateResults = $("#climate-results-alert").html();
+          resultsTemplate = Handlebars.compile(climateResults);
+          output.hazard = $("#cboHazard").val();
+          var html = resultsTemplate(output);
+          $("#results").html(html);
 
         } else {
           $("#errorText").text('There was a problem');
+
         }
 
         // Add the Poisson component to the table
