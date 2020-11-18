@@ -36,7 +36,6 @@ function beforeMapLoads(){
           "id": service.name,
           "name": "Client data - " & service.name,
           legendClass: "client",
-          cluster: true,
           "type": "agsFeatureLayer",
           "tokenRequired": true,
           "opacity": 1,
@@ -44,7 +43,7 @@ function beforeMapLoads(){
           "url": service.url + "/0",
           "useCors": true,
           "popup": true,
-          "fields": ["objectid", "placemarker_name", "placemarker_icon", "placemarker_description"]
+          "fields": ["*"]
         }
 
         config.layers.push(clientLayer);
