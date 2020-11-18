@@ -10,8 +10,57 @@ function beforeMapLoads(){
 
 	});
 
-	// Continue to load the map
-	loadMap();
+  // Check for any valid "Client_" layers which this ArcGIS Online
+  // user has access to
+  let url = config.baseURL + "&token=" + config.token;
+  $.ajax({
+    url: url,
+    type: 'GET',
+    dataType: "json"
+  }).done(function(response) {
+
+    for (var i = 0; i < response.services.length; i++){
+      var service = response.services[i];
+      if (service.name.toUpperCase().includes("CLIENT_")) {
+        // Add the Client Data TOC category unless it's already found
+        var tocCategory = config.tocCategories.find(o => o.name === "Client data");
+        if (tocCategory === undefined){
+          config.tocCategories.push({name: "Client data", layers:[]});
+          tocCategory = config.tocCategories.find(o => o.name === "Client data");
+        }
+
+        // Add this layer to the config file
+        tocCategory.layers.push(service.name);
+
+        var clientLayer = {
+          "id": service.name,
+          "name": "Client data - " & service.name,
+          legendClass: "client",
+          cluster: true,
+          "type": "agsFeatureLayer",
+          "tokenRequired": true,
+          "opacity": 1,
+          "visible": false,
+          "url": service.url + "/0",
+          "useCors": true,
+          "popup": true,
+          "fields": ["objectid", "placemarker_name", "placemarker_icon", "placemarker_description"]
+        }
+
+        config.layers.push(clientLayer);
+
+        console.log("found layer", service.name, "at", service.url)
+      }
+    }
+
+    // Continue to load the map
+    loadMap();
+
+  }).catch(function(error) {
+    console.error("There was a problem fetching the client layers")
+    loadMap();
+  });
+
 
 }
 
@@ -78,27 +127,6 @@ function afterMapLoads(){
       bootleaf.map.openPopup(output, evt.latlng)
     });
   });
-
-  // Check for any valid "Client_" layers which this ArcGIS Online
-  // user has access to
-  let url = config.baseURL + "&token=" + config.token;
-  $.ajax({
-    url: url,
-    type: 'GET',
-    dataType: "json"
-  }).done(function(response) {
-
-    for (var i = 0; i < response.services.length; i++){
-      var service = response.services[i];
-      if (service.name.toUpperCase().includes("CLIENT_")) {
-        console.log("found layer", service.name, "at", service.url)
-      }
-    }
-  }).catch(function(error) {
-    console.error("There was a problem fetching the client layers")
-  });
-
-
 
 }
 
