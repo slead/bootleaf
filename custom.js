@@ -32,6 +32,17 @@ function beforeMapLoads(){
         // Add this layer to the config file
         tocCategory.layers.push(service.name);
 
+        // var iconUrl = 'http://crdb.ewn.com.au/images/layer_markers/';
+        // iconUrl += service.name.toLowerCase().replace("client_", "") + ".png"
+        var clientIcon = L.icon({
+          iconUrl:  'http://crdb.ewn.com.au/images/layer_markers/' + service.name.toLowerCase().replace("client_", "") + ".png",
+          iconSize:     [38, 95], // size of the icon
+          shadowSize:   [50, 64], // size of the shadow
+          iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+          shadowAnchor: [4, 62],  // the same for the shadow
+          popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+        });
+
         var clientLayer = {
           "id": service.name,
           "name": "Client data - " & service.name,

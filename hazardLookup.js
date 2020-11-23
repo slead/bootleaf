@@ -7,7 +7,6 @@ var hazardLookup = [
        {value:"cyclone3", alias:"Cyclone (Category 3)"},
        {value:"cyclone4", alias:"Cyclone (Category 4)"},
        {value:"cyclone5", alias:"Cyclone (Category 5)"},
-       {value:"cyclone", alias:"Cyclone (all)"},
        {value:"drought", alias:"Drought"},
        {value:"earthquake2", alias:"Earthquake (2.0 MMI)"},
        {value:"earthquake3", alias:"Earthquake (3.0 MMI)"},
